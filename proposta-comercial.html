@@ -1,0 +1,2690 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proposta Comercial — Flare Productions</title>
+  <style>
+    :root {
+      --preto: #000000;
+      --laranja: #f97316;
+      --creme: #f2f1ef;
+      --branco: #ffffff;
+      --cinza-escuro: #0d0d0d;
+      --cinza-medio: #141414;
+      --cinza-claro: #1e1e1e;
+      --cinza-borda: #252525;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--preto);
+      color: var(--branco);
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo img {
+      height: 28px;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--laranja); }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.4);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 0 80px;
+      max-width: 1200px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--laranja);
+      margin-bottom: 28px;
+      border-left: 2px solid var(--laranja);
+      padding-left: 12px;
+    }
+
+    .hero-title {
+      font-size: clamp(56px, 9vw, 110px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 0.92;
+      margin-bottom: 32px;
+    }
+
+    .hero-title .accent { color: var(--laranja); }
+
+    .hero-body {
+      display: flex;
+      align-items: flex-end;
+      gap: 80px;
+    }
+
+    .hero-desc {
+      font-size: 17px;
+      color: rgba(255,255,255,0.6);
+      max-width: 480px;
+      line-height: 1.8;
+      flex-shrink: 0;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--laranja);
+      color: var(--preto);
+    }
+
+    .btn-primary:hover { background: #e06510; }
+
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.75);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--laranja);
+      color: var(--laranja);
+    }
+
+    /* ─── LAYOUT BASE ─── */
+    section { padding: 120px 0; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 80px;
+    }
+
+    .label {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--laranja);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .h1 {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+
+    .h2 {
+      font-size: clamp(28px, 3.5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .body-text {
+      font-size: 16px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.8;
+      max-width: 580px;
+    }
+
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--cinza-borda);
+      margin: 0;
+    }
+
+    /* ─── SOBRE ─── */
+    #sobre {
+      background: var(--cinza-escuro);
+      border-top: 1px solid var(--cinza-borda);
+      border-bottom: 1px solid var(--cinza-borda);
+    }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+
+    .sobre-left .tagline {
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 32px;
+    }
+
+    .sobre-left .tagline em {
+      font-style: normal;
+      color: var(--laranja);
+    }
+
+    .sobre-left .copy {
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.85;
+      margin-bottom: 48px;
+    }
+
+    .sobre-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--cinza-borda);
+      padding-top: 40px;
+      gap: 0;
+    }
+
+    .stat {
+      padding-right: 32px;
+    }
+
+    .stat + .stat {
+      border-left: 1px solid var(--cinza-borda);
+      padding-left: 32px;
+      padding-right: 0;
+    }
+
+    .stat-num {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--laranja);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-lbl {
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.05em;
+      line-height: 1.4;
+    }
+
+    .sobre-right {
+      position: relative;
+    }
+
+    .sobre-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(15%);
+    }
+
+    .sobre-quote {
+      position: absolute;
+      bottom: -1px;
+      left: -1px;
+      right: -1px;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      padding: 28px 32px;
+      border-top: 2px solid var(--laranja);
+    }
+
+    .sobre-quote p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* ─── SERVIÇOS ─── */
+    #servicos {
+      background: var(--preto);
+    }
+
+    .servicos-header {
+      margin-bottom: 72px;
+    }
+
+    .servicos-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .servico-item {
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr auto;
+      align-items: center;
+      gap: 48px;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--cinza-borda);
+      transition: all 0.2s;
+    }
+
+    .servico-item:first-child { border-top: 1px solid var(--cinza-borda); }
+
+    .servico-item:hover .servico-num { color: var(--laranja); }
+
+    .servico-num {
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.2);
+      font-weight: 700;
+      transition: color 0.2s;
+    }
+
+    .servico-name {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .servico-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+    }
+
+    .servico-arrow {
+      font-size: 20px;
+      color: rgba(255,255,255,0.15);
+      transition: all 0.2s;
+    }
+
+    .servico-item:hover .servico-arrow {
+      color: var(--laranja);
+      transform: translateX(4px);
+    }
+
+    /* ─── FRAME ─── */
+    #frame {
+      background: var(--cinza-escuro);
+      border-top: 1px solid var(--cinza-borda);
+      border-bottom: 1px solid var(--cinza-borda);
+    }
+
+    .frame-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 80px;
+    }
+
+    .frame-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2px;
+    }
+
+    .frame-step {
+      background: var(--cinza-medio);
+      border: 1px solid var(--cinza-borda);
+      overflow: hidden;
+    }
+
+    .frame-letter {
+      background: var(--laranja);
+      color: var(--preto);
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      padding: 24px;
+      line-height: 1;
+    }
+
+    .frame-body {
+      padding: 24px;
+    }
+
+    .frame-body h4 {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: var(--branco);
+    }
+
+    .frame-body p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.65;
+    }
+
+    /* ─── PORTFÓLIO ─── */
+    #portfolio {
+      background: var(--preto);
+    }
+
+    .portfolio-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 48px;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .portfolio-item {
+      aspect-ratio: 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s;
+      filter: grayscale(20%);
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.04);
+      filter: grayscale(0%);
+    }
+
+    .portfolio-item.tall {
+      aspect-ratio: 1 / 1.5;
+      grid-row: span 1;
+    }
+
+    /* ─── PACOTES ─── */
+    #pacotes {
+      background: var(--cinza-escuro);
+      border-top: 1px solid var(--cinza-borda);
+      border-bottom: 1px solid var(--cinza-borda);
+    }
+
+    .pacotes-header {
+      margin-bottom: 72px;
+    }
+
+    .pacotes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .pacote {
+      background: var(--cinza-medio);
+      border: 1px solid var(--cinza-borda);
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s;
+    }
+
+    .pacote:hover { border-color: rgba(249,115,22,0.4); }
+    .pacote.featured { border-color: var(--laranja); }
+
+    .pacote-tag {
+      background: var(--laranja);
+      color: var(--preto);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 7px 0;
+    }
+
+    .pacote-head {
+      padding: 36px 36px 28px;
+      border-bottom: 1px solid var(--cinza-borda);
+    }
+
+    .pacote-name {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--laranja);
+      margin-bottom: 16px;
+    }
+
+    .pacote-price {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--branco);
+    }
+
+    .pacote-price sub {
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0;
+      vertical-align: baseline;
+    }
+
+    .pacote-periodo {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      margin-top: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    .pacote-body {
+      padding: 28px 36px 36px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pacote-items {
+      list-style: none;
+      flex: 1;
+    }
+
+    .pacote-items li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.45;
+    }
+
+    .pacote-items li:last-child { border-bottom: none; }
+
+    .pacote-items li .ico {
+      color: var(--laranja);
+      font-size: 12px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .pacote-items li strong {
+      color: var(--branco);
+      font-weight: 600;
+    }
+
+    .pacote-brinde {
+      margin-top: 20px;
+      padding: 14px 16px;
+      background: rgba(249,115,22,0.07);
+      border: 1px solid rgba(249,115,22,0.2);
+      font-size: 13px;
+      color: rgba(249,115,22,0.9);
+      line-height: 1.5;
+    }
+
+    .nota-midia {
+      margin-top: 48px;
+      padding: 24px 32px;
+      border: 1px solid var(--cinza-borda);
+      background: var(--cinza-medio);
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+    }
+
+    .nota-midia strong { color: rgba(255,255,255,0.8); }
+
+    /* ─── AVULSOS ─── */
+    #avulsos {
+      background: var(--preto);
+    }
+
+    .avulsos-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+
+    .avulsos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .avulso {
+      background: var(--cinza-medio);
+      border: 1px solid var(--cinza-borda);
+      padding: 32px 24px;
+      transition: border-color 0.2s;
+    }
+
+    .avulso:hover { border-color: rgba(249,115,22,0.35); }
+
+    .avulso-name {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+
+    .avulso-price {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--laranja);
+    }
+
+    /* ─── TIME ─── */
+    #time {
+      background: var(--cinza-escuro);
+      border-top: 1px solid var(--cinza-borda);
+      border-bottom: 1px solid var(--cinza-borda);
+    }
+
+    .time-header {
+      margin-bottom: 64px;
+    }
+
+    .time-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .membro {
+      background: var(--cinza-medio);
+      border: 1px solid var(--cinza-borda);
+      overflow: hidden;
+    }
+
+    .membro-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(30%);
+      transition: filter 0.3s;
+    }
+
+    .membro:hover .membro-img { filter: grayscale(0%); }
+
+    .membro-info {
+      padding: 24px 28px;
+      border-top: 1px solid var(--cinza-borda);
+    }
+
+    .membro-name {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .membro-role {
+      font-size: 11px;
+      color: var(--laranja);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ─── CTA ─── */
+    #cta {
+      background: var(--preto);
+    }
+
+    .cta-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .cta-left .h1 {
+      font-size: clamp(40px, 5vw, 72px);
+      margin-bottom: 16px;
+    }
+
+    .cta-left .h1 em {
+      font-style: normal;
+      color: var(--laranja);
+    }
+
+    .cta-left .body-text {
+      margin-bottom: 48px;
+    }
+
+    .cta-right {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .cta-info {
+      background: var(--cinza-medio);
+      border: 1px solid var(--cinza-borda);
+      padding: 28px 32px;
+    }
+
+    .cta-info-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 8px;
+    }
+
+    .cta-info-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--branco);
+    }
+
+    .cta-info-value a {
+      color: var(--branco);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .cta-info-value a:hover { color: var(--laranja); }
+
+    .cta-steps {
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid var(--cinza-borda);
+      padding-top: 48px;
+    }
+
+    .cta-step {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--cinza-borda);
+    }
+
+    .cta-step:last-child { border-bottom: none; }
+
+    .cta-step-num {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--laranja);
+      font-weight: 700;
+      padding-top: 2px;
+    }
+
+    .cta-step-text h4 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .cta-step-text p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.6;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--cinza-escuro);
+      border-top: 1px solid var(--cinza-borda);
+      padding: 40px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    footer img { height: 22px; opacity: 0.7; }
+
+    .footer-mid {
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-right {
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .container { padding: 0 40px; }
+      nav { padding: 0 40px; }
+      footer { padding: 32px 40px; }
+      .hero-content { padding: 0 40px; }
+      .sobre-grid,
+      .frame-header,
+      .avulsos-header,
+      .cta-inner { grid-template-columns: 1fr; gap: 48px; }
+      .frame-steps { grid-template-columns: repeat(3, 1fr); }
+      .avulsos-grid { grid-template-columns: repeat(3, 1fr); }
+      .time-grid { grid-template-columns: repeat(2, 1fr); }
+      .pacotes-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 24px; }
+      nav { padding: 0 24px; }
+      nav .nav-links { display: none; }
+      footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+      .hero-content { padding: 0 24px; }
+      .hero-body { flex-direction: column; gap: 32px; align-items: flex-start; }
+      section { padding: 80px 0; }
+      .servico-item { grid-template-columns: 48px 1fr; }
+      .servico-desc, .servico-arrow { display: none; }
+      .frame-steps { grid-template-columns: 1fr 1fr; }
+      .avulsos-grid { grid-template-columns: repeat(2, 1fr); }
+      .time-grid { grid-template-columns: 1fr; }
+      .sobre-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">
+      <img src="https://flareproductions.com.br/Imgs/Flare-Productions_logo.png"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"
+           alt="Flare Productions">
+      <span style="display:none; font-size:16px; font-weight:700; letter-spacing:0.15em; color:#fff;">
+        <span style="color:#f97316;">FLARE</span> PRODUCTIONS
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#pacotes">Pacotes</a></li>
+      <li><a href="#portfolio">Portfólio</a></li>
+      <li><a href="#cta">Contato</a></li>
+      <li><a href="#diagnostico" id="navDiag" style="color:var(--laranja)!important;">Diagnóstico</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <video class="hero-bg-video" autoplay loop muted playsinline>
+      <source src="https://res.cloudinary.com/tatikka/video/upload/v1773233515/Flare-Productions-v2_zeaf24.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Proposta Comercial — Pacotes FRAME</div>
+      <h1 class="hero-title">
+        <span class="accent">FLARE</span><br>
+        PRODUCTIONS
+      </h1>
+      <div class="hero-body">
+        <p class="hero-desc">
+          Produtora audiovisual estratégica para marcas que buscam exclusividade e diferenciação criativa.
+        </p>
+        <div class="hero-ctas">
+          <a href="#pacotes" class="btn btn-primary">Ver pacotes</a>
+          <a href="#cta" class="btn btn-ghost">Fale com a Flare</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <div class="container">
+      <div class="sobre-grid">
+        <div class="sobre-left">
+          <span class="label">Quem somos</span>
+          <h2 class="tagline">
+            Não entregamos vídeos.<br>
+            Entregamos <em>ativos de negócio.</em>
+          </h2>
+          <p class="copy">
+            Com um DNA focado em storytelling, criatividade com referências internacionais e um processo de direção único e centrado no ser humano, a Flare não entrega apenas vídeos e fotos, mas sim ativos de negócio que geram resultados mensuráveis, fortalecem a marca e criam uma conexão autêntica com o público.
+          </p>
+          <div class="sobre-stats">
+            <div class="stat">
+              <div class="stat-num">+10</div>
+              <div class="stat-lbl">Anos de experiência visual</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">B2B</div>
+              <div class="stat-lbl">Foco exclusivo em empresas</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">100%</div>
+              <div class="stat-lbl">Centrado no ser humano</div>
+            </div>
+          </div>
+        </div>
+        <div class="sobre-right">
+          <img
+            src="https://res.cloudinary.com/tatikka/image/upload/w_800,c_limit,f_auto,q_auto/v1770922249/Richard_Freitas_-CEO_e_Fundador_qsg0eu.jpg"
+            alt="Richard Freitas — CEO e Fundador"
+            class="sobre-img">
+          <div class="sobre-quote">
+            <p>"Campanhas para Masterchef, Chevrolet, Coca-Cola e publicações na Revista Veja — expertise nacional aplicada ao mercado do interior de SP."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos">
+    <div class="container">
+      <div class="servicos-header">
+        <span class="label">O que entregamos</span>
+        <h2 class="h1">Nossos serviços</h2>
+      </div>
+      <div class="servicos-list">
+        <div class="servico-item">
+          <span class="servico-num">01</span>
+          <h3 class="servico-name">Produção de Vídeo</h3>
+          <p class="servico-desc">Criamos filmes que respiram a identidade da sua marca. Experiências audiovisuais imersivas, desenhadas para reter a atenção e comunicar com elegância.</p>
+          <span class="servico-arrow">→</span>
+        </div>
+        <div class="servico-item">
+          <span class="servico-num">02</span>
+          <h3 class="servico-name">Fotografia</h3>
+          <p class="servico-desc">Transformamos produtos e momentos em narrativas visuais de alto impacto. Nossa lente captura a essência que torna sua marca inconfundível e desejável.</p>
+          <span class="servico-arrow">→</span>
+        </div>
+        <div class="servico-item">
+          <span class="servico-num">03</span>
+          <h3 class="servico-name">Gestão de Tráfego Pago</h3>
+          <p class="servico-desc">Meta Ads e Google Ads com criativo forte. Campanhas que não desperdiçam verba — distribuição inteligente com conteúdo que converte.</p>
+          <span class="servico-arrow">→</span>
+        </div>
+        <div class="servico-item">
+          <span class="servico-num">04</span>
+          <h3 class="servico-name">Consultoria de Branding</h3>
+          <p class="servico-desc">Posicionamento estratégico e direção criativa para empresas que querem ser referência no seu mercado.</p>
+          <span class="servico-arrow">→</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTODO FRAME -->
+  <section id="frame">
+    <div class="container">
+      <div class="frame-header">
+        <div>
+          <span class="label">Nossa metodologia</span>
+          <h2 class="h1">Método FRAME</h2>
+        </div>
+        <p class="body-text">
+          Cada entrega é estratégica, mensurável e escalável. O Método FRAME garante que nenhuma peça seja produzida sem propósito — do diagnóstico ao crescimento contínuo.
+        </p>
+      </div>
+      <div class="frame-steps">
+        <div class="frame-step">
+          <div class="frame-letter">F</div>
+          <div class="frame-body">
+            <h4>Fundação</h4>
+            <p>Imersão profunda no negócio. Posicionamento, público e diferenciais mapeados antes de qualquer câmera ser ligada.</p>
+          </div>
+        </div>
+        <div class="frame-step">
+          <div class="frame-letter">R</div>
+          <div class="frame-body">
+            <h4>Roteiro</h4>
+            <p>Plano criativo e editorial completo. Cada peça tem propósito definido antes da produção começar.</p>
+          </div>
+        </div>
+        <div class="frame-step">
+          <div class="frame-letter">A</div>
+          <div class="frame-body">
+            <h4>Amplificação</h4>
+            <p>Produção, edição e distribuição integradas — vídeos, fotos e tráfego pago funcionando em conjunto.</p>
+          </div>
+        </div>
+        <div class="frame-step">
+          <div class="frame-letter">M</div>
+          <div class="frame-body">
+            <h4>Mensuração</h4>
+            <p>Métricas reais: alcance, engajamento e conversão. Dados orientam decisões, não achismos.</p>
+          </div>
+        </div>
+        <div class="frame-step">
+          <div class="frame-letter">E</div>
+          <div class="frame-body">
+            <h4>Escala</h4>
+            <p>O que funciona é identificado e escalado. Crescimento contínuo, intencional e sustentável.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFÓLIO -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="portfolio-header">
+        <div>
+          <span class="label">Portfólio</span>
+          <h2 class="h2">Trabalhos recentes</h2>
+        </div>
+        <a href="https://www.flareproductions.com.br" target="_blank" class="btn btn-ghost" style="flex-shrink:0;">Ver portfólio completo</a>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-item">
+          <img src="https://res.cloudinary.com/tatikka/image/upload/w_800,c_limit,f_auto,q_auto/v1769560741/flare-productions_fotografia_01_lxqjje.png" alt="Portfólio Flare Productions">
+        </div>
+        <div class="portfolio-item">
+          <img src="https://res.cloudinary.com/tatikka/image/upload/w_800,c_limit,f_auto,q_auto/v1769560741/flare-productions_fotografia_02_a18ves.png" alt="Portfólio Flare Productions">
+        </div>
+        <div class="portfolio-item">
+          <img src="https://res.cloudinary.com/tatikka/image/upload/w_800,c_limit,f_auto,q_auto/v1769560741/flare-productions_fotografia_03_i2wlef.png" alt="Portfólio Flare Productions">
+        </div>
+        <div class="portfolio-item">
+          <img src="https://res.cloudinary.com/tatikka/image/upload/w_800,c_limit,f_auto,q_auto/v1769560741/flare-productions_fotografia_04_iqdafr.png" alt="Portfólio Flare Productions">
+        </div>
+        <div class="portfolio-item">
+          <img src="https://res.cloudinary.com/tatikka/image/upload/w_800,c_limit,f_auto,q_auto/v1769560741/flare-productions_fotografia_05_tyc9vm.png" alt="Portfólio Flare Productions">
+        </div>
+        <div class="portfolio-item">
+          <img src="https://res.cloudinary.com/tatikka/image/upload/w_800,c_limit,f_auto,q_auto/v1769560741/flare-productions_fotografia_06_wfw6xw.png" alt="Portfólio Flare Productions">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACOTES -->
+  <section id="pacotes">
+    <div class="container">
+      <div class="pacotes-header">
+        <span class="label">Planos mensais — contrato mínimo 6 meses</span>
+        <h2 class="h1">Pacotes FRAME</h2>
+        <p class="body-text" style="margin-top:16px;">Resultado consistente exige consistência. Escolha o pacote certo para o seu momento de negócio.</p>
+      </div>
+
+      <div class="pacotes-grid">
+
+        <!-- GOLD -->
+        <div class="pacote">
+          <div class="pacote-head">
+            <div class="pacote-name">FRAME Gold</div>
+            <div class="pacote-price">R$ 3.500<sub>/mês</sub></div>
+            <div class="pacote-periodo">Contrato mínimo: 6 meses</div>
+          </div>
+          <div class="pacote-body">
+            <ul class="pacote-items">
+              <li><span class="ico">—</span><span>Consultoria estratégica mensal</span></li>
+              <li><span class="ico">—</span><span><strong>4 vídeos</strong> profissionais/mês</span></li>
+              <li><span class="ico">—</span><span>Gestão de tráfego <strong>Meta Ads</strong></span></li>
+              <li><span class="ico">—</span><span>Roteiro + filmagem + edição</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PLATINUM -->
+        <div class="pacote featured">
+          <div class="pacote-tag">Mais popular</div>
+          <div class="pacote-head">
+            <div class="pacote-name">FRAME Platinum</div>
+            <div class="pacote-price">R$ 4.500<sub>/mês</sub></div>
+            <div class="pacote-periodo">Contrato mínimo: 6 meses</div>
+          </div>
+          <div class="pacote-body">
+            <ul class="pacote-items">
+              <li><span class="ico">—</span><span>Consultoria estratégica mensal</span></li>
+              <li><span class="ico">—</span><span><strong>8 vídeos</strong> profissionais/mês</span></li>
+              <li><span class="ico">—</span><span>Gestão de tráfego <strong>Meta + Google Ads</strong></span></li>
+              <li><span class="ico">—</span><span>Roteiro + filmagem + edição</span></li>
+            </ul>
+            <div class="pacote-brinde">
+              <strong>Brinde:</strong> Ensaio corporativo com 20 fotos profissionais
+            </div>
+          </div>
+        </div>
+
+        <!-- BLACK -->
+        <div class="pacote">
+          <div class="pacote-head">
+            <div class="pacote-name">FRAME Black</div>
+            <div class="pacote-price">R$ 5.300<sub>/mês</sub></div>
+            <div class="pacote-periodo">Contrato mínimo: 6 meses</div>
+          </div>
+          <div class="pacote-body">
+            <ul class="pacote-items">
+              <li><span class="ico">—</span><span>Consultoria estratégica mensal</span></li>
+              <li><span class="ico">—</span><span><strong>12 vídeos</strong> profissionais/mês</span></li>
+              <li><span class="ico">—</span><span>Gestão de tráfego <strong>Meta + Google Ads</strong></span></li>
+              <li><span class="ico">—</span><span>Roteiro + filmagem + edição</span></li>
+            </ul>
+            <div class="pacote-brinde">
+              <strong>Brinde:</strong> Landing page profissional completa
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="nota-midia">
+        <strong>Verba de mídia não inclusa.</strong> O investimento em anúncios (Meta Ads, Google Ads) é separado e acordado conforme os objetivos e capacidade de cada cliente. Os pacotes cobrem criação, produção e gestão — a verba é paga diretamente às plataformas.
+      </div>
+    </div>
+  </section>
+
+  <!-- AVULSOS -->
+  <section id="avulsos">
+    <div class="container">
+      <div class="avulsos-header">
+        <div>
+          <span class="label">Sem contrato fixo</span>
+          <h2 class="h1">Trabalhos avulsos</h2>
+        </div>
+        <p class="body-text">Para projetos pontuais. Ideal para quem quer conhecer a Flare antes de fechar um pacote mensal.</p>
+      </div>
+      <div class="avulsos-grid">
+        <div class="avulso">
+          <div class="avulso-name">Drone</div>
+          <div class="avulso-price">R$ 750</div>
+        </div>
+        <div class="avulso">
+          <div class="avulso-name">Fotos corporativas</div>
+          <div class="avulso-price">R$ 500</div>
+        </div>
+        <div class="avulso">
+          <div class="avulso-name">Vídeo sem drone</div>
+          <div class="avulso-price">R$ 500</div>
+        </div>
+        <div class="avulso">
+          <div class="avulso-name">Vídeo com drone</div>
+          <div class="avulso-price">R$ 1.000</div>
+        </div>
+        <div class="avulso">
+          <div class="avulso-name">Landing page personalizada</div>
+          <div class="avulso-price">R$ 1.200</div>
+        </div>
+        <div class="avulso">
+          <div class="avulso-name">Consultoria de branding</div>
+          <div class="avulso-price">R$ 2.500</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIME -->
+  <section id="time">
+    <div class="container">
+      <div class="time-header">
+        <span class="label">Nos bastidores, quem faz tudo acontecer</span>
+        <h2 class="h1">Nosso time</h2>
+      </div>
+      <div class="time-grid">
+        <div class="membro">
+          <img
+            src="https://res.cloudinary.com/tatikka/image/upload/w_800,c_limit,f_auto,q_auto/v1770922249/Richard_Freitas_-CEO_e_Fundador_qsg0eu.jpg"
+            alt="Richard Freitas"
+            class="membro-img">
+          <div class="membro-info">
+            <div class="membro-name">RICHARD FREITAS</div>
+            <div class="membro-role">CEO e Fundador</div>
+          </div>
+        </div>
+        <div class="membro">
+          <img
+            src="https://res.cloudinary.com/tatikka/image/upload/w_800,c_limit,f_auto,q_auto/v1770922249/Maria_Eleonora_Gripho_-_Head_de_Gest%C3%A3o_Operacional_wdkwhc.jpg"
+            alt="Maria Eleonora Gripho"
+            class="membro-img">
+          <div class="membro-info">
+            <div class="membro-name">MARIA ELEONORA GRIPHO</div>
+            <div class="membro-role">Head de Gestão Operacional</div>
+          </div>
+        </div>
+        <div class="membro">
+          <img
+            src="https://res.cloudinary.com/tatikka/image/upload/w_800,c_limit,f_auto,q_auto/v1770922258/Bruno_Ara%C3%BAjo_-_Editor_k3un5n.jpg"
+            alt="Bruno Araújo"
+            class="membro-img">
+          <div class="membro-info">
+            <div class="membro-name">BRUNO ARAÚJO</div>
+            <div class="membro-role">Editor</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="cta-left">
+          <span class="label">Próximos passos</span>
+          <h2 class="h1">
+            Você tem um projeto<br>
+            <em>em mente?</em>
+          </h2>
+          <p class="body-text">
+            Entre em contato e descubra como a Flare pode te ajudar.
+          </p>
+          <div class="cta-steps">
+            <div class="cta-step">
+              <span class="cta-step-num">01</span>
+              <div class="cta-step-text">
+                <h4>Conversa de diagnóstico</h4>
+                <p>Entendemos seu negócio e o que está travando seu crescimento. Gratuito, sem compromisso.</p>
+              </div>
+            </div>
+            <div class="cta-step">
+              <span class="cta-step-num">02</span>
+              <div class="cta-step-text">
+                <h4>Proposta personalizada</h4>
+                <p>Indicamos o pacote ideal ou montamos algo sob medida para sua realidade.</p>
+              </div>
+            </div>
+            <div class="cta-step">
+              <span class="cta-step-num">03</span>
+              <div class="cta-step-text">
+                <h4>Início do Método FRAME</h4>
+                <p>Em até 7 dias após a assinatura, sua empresa já está em produção.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cta-right">
+          <div class="cta-info">
+            <div class="cta-info-label">Instagram</div>
+            <div class="cta-info-value">
+              <a href="https://instagram.com/flareproductionss" target="_blank">@flareproductionss</a>
+            </div>
+          </div>
+          <div class="cta-info">
+            <div class="cta-info-label">E-mail</div>
+            <div class="cta-info-value">
+              <a href="mailto:flareproductions@outlook.com">flareproductions@outlook.com</a>
+            </div>
+          </div>
+          <div class="cta-info">
+            <div class="cta-info-label">Telefone / WhatsApp</div>
+            <div class="cta-info-value">
+              <a href="tel:+5516988095920">+55 16 98809-5920</a>
+            </div>
+          </div>
+          <div class="cta-info">
+            <div class="cta-info-label">Localização</div>
+            <div class="cta-info-value">Franca — São Paulo — BR</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       DIAGNÓSTICO — ÁREA PROTEGIDA
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="diagnostico" style="background:var(--cinza-escuro); border-top:1px solid var(--cinza-borda); padding:120px 0;">
+    <div class="container">
+
+      <!-- GATE: tela de acesso -->
+      <div id="diagGate">
+        <div style="max-width:480px; margin:0 auto; text-align:center;">
+          <div style="width:64px;height:64px;border:1px solid var(--cinza-borda);display:flex;align-items:center;justify-content:center;margin:0 auto 32px;font-size:24px;">🔒</div>
+          <span class="label" style="justify-content:center;display:block;">Área Restrita</span>
+          <h2 class="h1" style="margin-bottom:16px;">Diagnóstico<br>Personalizado</h2>
+          <p style="font-size:15px;color:rgba(255,255,255,0.45);line-height:1.7;margin-bottom:40px;">
+            Acesso exclusivo ao diagnóstico completo da sua empresa e à jornada de onboarding.
+          </p>
+          <button onclick="document.getElementById('loginModal').style.display='flex'" class="btn btn-primary" style="border:none;cursor:pointer;font-family:inherit;">
+            Acessar diagnóstico
+          </button>
+        </div>
+      </div>
+
+      <!-- CONTEÚDO DIAGNÓSTICO (oculto até login) -->
+      <div id="diagContent" style="display:none;">
+
+        <!-- ── BARRA DE NAVEGAÇÃO INTERNA ── -->
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:56px;border-bottom:1px solid var(--cinza-borda);padding-bottom:24px;flex-wrap:wrap;gap:16px;">
+          <div style="display:flex;gap:0;">
+            <button class="tab-btn active" onclick="switchTab('pesquisa')" id="tab-pesquisa" style="background:none;border:none;border-bottom:2px solid var(--laranja);color:var(--branco);font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0 0 16px;margin-right:32px;cursor:pointer;transition:all 0.2s;">Novo Diagnóstico</button>
+            <button class="tab-btn" onclick="switchTab('historico')" id="tab-historico" style="background:none;border:none;border-bottom:2px solid transparent;color:rgba(255,255,255,0.35);font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0 0 16px;margin-right:32px;cursor:pointer;transition:all 0.2s;">Histórico</button>
+            <button class="tab-btn" onclick="switchTab('atual')" id="tab-atual" style="background:none;border:none;border-bottom:2px solid transparent;color:rgba(255,255,255,0.35);font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0 0 16px;cursor:pointer;transition:all 0.2s;" id="tab-atual">Ver Diagnóstico</button>
+          </div>
+          <button onclick="diagLogout()" style="background:none;border:1px solid var(--cinza-borda);color:rgba(255,255,255,0.4);font-family:inherit;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 20px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--laranja)';this.style.color='var(--laranja)'" onmouseout="this.style.borderColor='var(--cinza-borda)';this.style.color='rgba(255,255,255,0.4)'">Sair</button>
+        </div>
+
+        <!-- ══════════════════════════════════
+             TAB: NOVO DIAGNÓSTICO (formulário)
+             ══════════════════════════════════ -->
+        <div id="panel-pesquisa">
+
+          <!-- Config API Key -->
+          <div style="background:rgba(249,115,22,0.06);border:1px solid rgba(249,115,22,0.2);padding:20px 24px;margin-bottom:40px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+            <div style="flex:1;min-width:200px;">
+              <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--laranja);margin-bottom:6px;">Chave da API Gemini</div>
+              <input id="apiKeyInput" type="password" placeholder="AIzaSy..."
+                style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(249,115,22,0.3);color:var(--branco);font-family:inherit;font-size:14px;padding:6px 0;outline:none;"
+                onfocus="this.style.borderBottomColor='var(--laranja)'" onblur="this.style.borderBottomColor='rgba(249,115,22,0.3)'">
+            </div>
+            <button onclick="saveApiKey()" style="background:none;border:1px solid rgba(249,115,22,0.4);color:var(--laranja);font-family:inherit;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:10px 20px;cursor:pointer;white-space:nowrap;flex-shrink:0;" onmouseover="this.style.background='rgba(249,115,22,0.1)'" onmouseout="this.style.background='none'">Salvar chave</button>
+            <span id="apiKeyStatus" style="font-size:12px;color:#22c55e;display:none;">✓ Chave salva</span>
+          </div>
+
+          <!-- Formulário -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+            <div>
+              <span class="label">Dados do cliente</span>
+              <h2 class="h2" style="margin-bottom:32px;">Gerar diagnóstico<br>com inteligência artificial</h2>
+
+              <div style="display:flex;flex-direction:column;gap:20px;">
+                <div>
+                  <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:8px;">Nome da empresa *</label>
+                  <input id="f-nome" type="text" placeholder="Ex: Santamelia Agropecuária"
+                    style="width:100%;background:var(--cinza-medio);border:1px solid var(--cinza-borda);color:var(--branco);font-family:inherit;font-size:15px;padding:14px 16px;outline:none;transition:border-color 0.2s;"
+                    onfocus="this.style.borderColor='var(--laranja)'" onblur="this.style.borderColor='var(--cinza-borda)'">
+                </div>
+                <div>
+                  <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:8px;">Instagram (@ sem arroba)</label>
+                  <input id="f-instagram" type="text" placeholder="Ex: santameliaagro"
+                    style="width:100%;background:var(--cinza-medio);border:1px solid var(--cinza-borda);color:var(--branco);font-family:inherit;font-size:15px;padding:14px 16px;outline:none;transition:border-color 0.2s;"
+                    onfocus="this.style.borderColor='var(--laranja)'" onblur="this.style.borderColor='var(--cinza-borda)'">
+                </div>
+                <div>
+                  <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:8px;">Site</label>
+                  <input id="f-site" type="text" placeholder="Ex: santameliaagropecuaria.com"
+                    style="width:100%;background:var(--cinza-medio);border:1px solid var(--cinza-borda);color:var(--branco);font-family:inherit;font-size:15px;padding:14px 16px;outline:none;transition:border-color 0.2s;"
+                    onfocus="this.style.borderColor='var(--laranja)'" onblur="this.style.borderColor='var(--cinza-borda)'">
+                </div>
+                <div>
+                  <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:8px;">Segmento / tipo de negócio</label>
+                  <input id="f-segmento" type="text" placeholder="Ex: Agropecuária, Gastronomia, Moda..."
+                    style="width:100%;background:var(--cinza-medio);border:1px solid var(--cinza-borda);color:var(--branco);font-family:inherit;font-size:15px;padding:14px 16px;outline:none;transition:border-color 0.2s;"
+                    onfocus="this.style.borderColor='var(--laranja)'" onblur="this.style.borderColor='var(--cinza-borda)'">
+                </div>
+                <div>
+                  <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:8px;">Observações / contexto adicional</label>
+                  <textarea id="f-obs" rows="4" placeholder="Ex: Empresa de porte médio, sem investimento em marketing até agora. Ticket médio alto."
+                    style="width:100%;background:var(--cinza-medio);border:1px solid var(--cinza-borda);color:var(--branco);font-family:inherit;font-size:15px;padding:14px 16px;outline:none;resize:vertical;transition:border-color 0.2s;"
+                    onfocus="this.style.borderColor='var(--laranja)'" onblur="this.style.borderColor='var(--cinza-borda)'"></textarea>
+                </div>
+                <button onclick="gerarDiagnostico()" id="btnGerar" class="btn btn-primary" style="border:none;cursor:pointer;font-family:inherit;width:100%;font-size:13px;">
+                  Gerar diagnóstico com IA
+                </button>
+                <div id="gerarError" style="display:none;font-size:13px;color:#ef4444;padding:12px 14px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);"></div>
+              </div>
+            </div>
+
+            <!-- Loading / dica -->
+            <div id="gerarInfo" style="background:var(--cinza-medio);border:1px solid var(--cinza-borda);padding:36px;">
+              <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:20px;">Como funciona</div>
+              <div style="display:flex;flex-direction:column;gap:20px;">
+                <div style="display:flex;gap:16px;align-items:flex-start;">
+                  <div style="width:32px;height:32px;background:var(--laranja);color:#000;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
+                  <div><div style="font-size:13px;font-weight:600;margin-bottom:4px;">Preencha os dados</div><div style="font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6;">Nome, Instagram, site e segmento do cliente.</div></div>
+                </div>
+                <div style="display:flex;gap:16px;align-items:flex-start;">
+                  <div style="width:32px;height:32px;background:var(--laranja);color:#000;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
+                  <div><div style="font-size:13px;font-weight:600;margin-bottom:4px;">IA analisa</div><div style="font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6;">Claude identifica pontos críticos, positivos e recomenda o pacote ideal.</div></div>
+                </div>
+                <div style="display:flex;gap:16px;align-items:flex-start;">
+                  <div style="width:32px;height:32px;background:var(--laranja);color:#000;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
+                  <div><div style="font-size:13px;font-weight:600;margin-bottom:4px;">Diagnóstico gerado</div><div style="font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6;">Resultado salvo no histórico e exportável em PDF.</div></div>
+                </div>
+              </div>
+              <div id="loadingState" style="display:none;margin-top:32px;border-top:1px solid var(--cinza-borda);padding-top:28px;">
+                <div style="font-size:12px;color:var(--laranja);letter-spacing:0.1em;margin-bottom:12px;">ANALISANDO...</div>
+                <div id="loadingMsg" style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.7;"></div>
+                <div style="height:2px;background:var(--cinza-borda);margin-top:20px;overflow:hidden;">
+                  <div id="loadingBar" style="height:100%;background:var(--laranja);width:0%;transition:width 0.5s;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /panel-pesquisa -->
+
+        <!-- ══════════════════════════════════
+             TAB: HISTÓRICO
+             ══════════════════════════════════ -->
+        <div id="panel-historico" style="display:none;">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;">
+            <div>
+              <span class="label">Diagnósticos salvos</span>
+              <h2 class="h2">Histórico de clientes</h2>
+            </div>
+            <button onclick="clearHistory()" style="background:none;border:1px solid rgba(239,68,68,0.3);color:rgba(239,68,68,0.6);font-family:inherit;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;cursor:pointer;" onmouseover="this.style.borderColor='#ef4444';this.style.color='#ef4444'" onmouseout="this.style.borderColor='rgba(239,68,68,0.3)';this.style.color='rgba(239,68,68,0.6)'">Limpar histórico</button>
+          </div>
+          <div id="historyList" style="display:flex;flex-direction:column;gap:2px;"></div>
+          <div id="historyEmpty" style="display:none;text-align:center;padding:80px 0;color:rgba(255,255,255,0.25);font-size:15px;">Nenhum diagnóstico salvo ainda.</div>
+        </div><!-- /panel-historico -->
+
+        <!-- ══════════════════════════════════
+             TAB: DIAGNÓSTICO ATUAL
+             ══════════════════════════════════ -->
+        <div id="panel-atual" style="display:none;">
+
+          <!-- Header -->
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:56px;flex-wrap:wrap;gap:24px;">
+            <div>
+              <span class="label">Diagnóstico Flare Productions</span>
+              <h2 class="h1" id="clientNameHeading" style="margin-bottom:8px;">—</h2>
+              <p style="font-size:13px;color:rgba(255,255,255,0.3);" id="diagDate">—</p>
+            </div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+              <button onclick="exportPDF()" class="btn btn-primary" style="border:none;cursor:pointer;font-family:inherit;">↓ Exportar PDF</button>
+            </div>
+          </div>
+
+          <!-- Scores -->
+          <div id="scoreCards" style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:56px;"></div>
+
+          <!-- Crítico + Positivo -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:56px;">
+            <div style="background:var(--cinza-medio);border:1px solid var(--cinza-borda);padding:40px;">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:28px;">
+                <div style="width:8px;height:8px;background:#ef4444;border-radius:50%;"></div>
+                <span style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#ef4444;">Pontos Críticos</span>
+              </div>
+              <ul id="criticalList" style="list-style:none;"></ul>
+            </div>
+            <div style="background:var(--cinza-medio);border:1px solid var(--cinza-borda);padding:40px;">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:28px;">
+                <div style="width:8px;height:8px;background:#22c55e;border-radius:50%;"></div>
+                <span style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#22c55e;">Pontos Positivos</span>
+              </div>
+              <ul id="positiveList" style="list-style:none;"></ul>
+            </div>
+          </div>
+
+          <!-- Visão Macro -->
+          <div id="macroSection" style="margin-bottom:56px;"></div>
+
+          <!-- Concorrentes -->
+          <div id="competitorsSection" style="margin-bottom:56px;"></div>
+
+          <!-- Prioridades de Ação -->
+          <div id="prioritiesSection" style="margin-bottom:56px;"></div>
+
+          <!-- Plano recomendado -->
+          <div style="background:var(--cinza-medio);border:1px solid var(--laranja);padding:40px;margin-bottom:2px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;">
+            <div>
+              <span style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--laranja);display:block;margin-bottom:16px;">Recomendação Flare</span>
+              <h3 id="planName" style="font-size:30px;font-weight:700;letter-spacing:-0.02em;margin-bottom:12px;">—</h3>
+              <p id="planReason" style="font-size:15px;color:rgba(255,255,255,0.55);line-height:1.8;max-width:600px;"></p>
+            </div>
+            <div style="text-align:center;flex-shrink:0;">
+              <div id="planPrice" style="font-size:44px;font-weight:700;letter-spacing:-0.04em;color:var(--laranja);line-height:1;"></div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:6px;letter-spacing:0.05em;">por mês · mín. 6 meses</div>
+            </div>
+          </div>
+
+          <!-- Comparação de pacotes -->
+          <div id="packagesSection" style="margin-bottom:56px;"></div>
+
+          <!-- Serviços avulsos (PDF) -->
+          <div id="avulsosSection" style="margin-bottom:80px;"></div>
+
+          <!-- Jornada -->
+          <div style="margin-bottom:40px;">
+            <span class="label">Após fechar o contrato</span>
+            <h2 class="h1" style="margin-bottom:8px;">Sua jornada com a Flare</h2>
+            <p style="font-size:15px;color:rgba(255,255,255,0.4);line-height:1.7;max-width:560px;margin-bottom:48px;">Cada fase foi desenhada para garantir uma transição suave, alinhamento total e resultados desde a primeira semana.</p>
+          </div>
+          <div id="timeline" style="display:flex;flex-direction:column;gap:2px;"></div>
+
+        </div><!-- /panel-atual -->
+
+      </div><!-- /diagContent -->
+    </div>
+  </section>
+
+  <!-- ─── MODAL DE LOGIN ─── -->
+  <div id="loginModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);backdrop-filter:blur(16px);z-index:999;align-items:center;justify-content:center;">
+    <div style="background:var(--cinza-medio);border:1px solid var(--cinza-borda);padding:56px 48px;width:100%;max-width:420px;position:relative;">
+      <button onclick="document.getElementById('loginModal').style.display='none'" style="position:absolute;top:20px;right:24px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:22px;cursor:pointer;font-family:inherit;">✕</button>
+      <div style="margin-bottom:40px;">
+        <span class="label" style="display:block;">Área Restrita</span>
+        <h3 style="font-size:24px;font-weight:700;letter-spacing:-0.02em;">Entrar</h3>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div>
+          <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:8px;">Usuário</label>
+          <input id="loginUser" type="text" placeholder="Digite seu usuário"
+            style="width:100%;background:var(--cinza-claro);border:1px solid var(--cinza-borda);color:var(--branco);font-family:inherit;font-size:15px;padding:14px 16px;outline:none;transition:border-color 0.2s;"
+            onfocus="this.style.borderColor='var(--laranja)'" onblur="this.style.borderColor='var(--cinza-borda)'"
+            onkeydown="if(event.key==='Enter')diagLogin()">
+        </div>
+        <div>
+          <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:8px;">Senha</label>
+          <input id="loginPass" type="password" placeholder="Digite sua senha"
+            style="width:100%;background:var(--cinza-claro);border:1px solid var(--cinza-borda);color:var(--branco);font-family:inherit;font-size:15px;padding:14px 16px;outline:none;transition:border-color 0.2s;"
+            onfocus="this.style.borderColor='var(--laranja)'" onblur="this.style.borderColor='var(--cinza-borda)'"
+            onkeydown="if(event.key==='Enter')diagLogin()">
+        </div>
+        <div id="loginError" style="display:none;font-size:13px;color:#ef4444;padding:12px 14px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);">
+          Usuário ou senha incorretos.
+        </div>
+        <button onclick="diagLogin()" class="btn btn-primary" style="border:none;cursor:pointer;font-family:inherit;margin-top:8px;width:100%;">
+          Acessar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SCRIPTS ─── -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+  // ══════════════════════════════════════════════════════
+  //  DIAGNÓSTICO SANTA MELIA — pré-carregado como teste
+  // ══════════════════════════════════════════════════════
+  const SANTA_MELIA_DIAG = {
+    id: 'santa-melia-2026',
+    clientName: 'Santamelia Agropecuária',
+    instagram: 'santameliaagro',
+    site: 'santameliaagropecuaria.com',
+    segmento: 'Agropecuária — insumos, rações, medicamentos veterinários, ferramentas e selaria',
+    date: 'Diagnóstico realizado em: Abril de 2026',
+    scores: [
+      { label: 'Presença Digital',  value: '4/10', note: 'Regular',  color: '#f97316' },
+      { label: 'Identidade Visual', value: '3/10', note: 'Crítico',  color: '#ef4444' },
+      { label: 'Conteúdo',         value: '3/10', note: 'Crítico',  color: '#ef4444' },
+      { label: 'Tráfego Pago',     value: '1/10', note: 'Ausente',  color: '#6b7280' },
+    ],
+    macro: {
+      maturidade: 'Iniciante',
+      potencial: 'Alto',
+      urgencia: 'Alta',
+      setor: 'O agronegócio no interior de São Paulo cresce de forma consistente, com Franca e região como polo de pecuária e produção rural. O setor movimenta bilhões anualmente, mas a presença digital de PMEs locais ainda é incipiente — criando uma janela de oportunidade real para quem sair na frente.',
+      oportunidade: 'Ser o primeiro player de agropecuária em Franca com posicionamento digital profissional. Quem construir autoridade agora vai colher os benefícios nos próximos 3 a 5 anos com vantagem competitiva duradoura.',
+      concorrencia: 'Nenhum concorrente local identificado com vídeo profissional, tráfego pago ativo ou identidade visual consistente. O mercado está fragmentado entre pequenas lojas com presença básica no WhatsApp e redes sociais sem estratégia. A janela está aberta.',
+    },
+    critical: [
+      { title: 'Site construído no Google Sites', desc: 'O uso do Google Sites transmite imagem amadora e limita a credibilidade da empresa. Clientes de maior ticket tendem a desconfiar de empresas sem site profissional — especialmente no agronegócio, onde confiança é fundamental.' },
+      { title: 'E-mail Gmail para contato empresarial', desc: 'O endereço santameliaagropecuaria@gmail.com passa falta de profissionalismo. Um domínio próprio (ex: contato@santameliaagro.com.br) custa menos de R$50/ano e eleva imediatamente a percepção de credibilidade.' },
+      { title: 'Ausência de tráfego pago identificado', desc: 'Nenhuma campanha ativa no Meta Ads ou Google Ads encontrada. Enquanto a empresa depende apenas de indicação e tráfego orgânico, concorrentes com menor qualidade aparecem na frente nos mecanismos de busca e no feed dos clientes.' },
+      { title: 'Instagram com baixa visibilidade nos mecanismos de busca', desc: 'O perfil @santameliaagro não aparece nos primeiros resultados ao pesquisar a empresa no Google, indicando ausência de SEO no perfil, bio não otimizada e baixo volume de conteúdo indexável.' },
+      { title: 'Ausência de conteúdo técnico e educativo', desc: 'O agronegócio tem uma oportunidade enorme em conteúdo educativo (nutrição animal, manejo, dicas de campo). A Santamelia não explora este formato, perdendo autoridade de marca e oportunidades de engajamento orgânico.' },
+      { title: 'Identidade visual provavelmente genérica', desc: 'O uso de plataforma de criação de sites gratuita sugere ausência de direção criativa consistente. Sem paleta definida, tipografia e tom de voz uniforme, a marca não cria memorização no cliente.' },
+    ],
+    positive: [
+      { title: 'Empresa estabelecida com presença física consolidada', desc: 'Localizada na Av. Francisco José da Silva, 2121, Franca-SP — ponto estratégico. Presença física é um ativo de credibilidade enorme que poucos concorrentes digitais têm.' },
+      { title: 'Portfólio amplo e diversificado', desc: 'Rações, medicamentos veterinários, insumos agrícolas, ferramentas, selaria e atendimento técnico. A variedade cria múltiplos ângulos de conteúdo e atende diferentes perfis de cliente.' },
+      { title: 'Mercado agro em expansão constante', desc: 'O agronegócio cresce consistentemente no interior de São Paulo. Franca e região têm forte tradição pecuária. Quem construir autoridade digital agora conquista vantagem duradoura sobre concorrentes.' },
+      { title: 'WhatsApp como canal de contato ativo', desc: 'O número de contato sinaliza abertura para atendimento direto — comportamento altamente eficiente no agro, onde relacionamento pessoal é valorizado. Canal com alto potencial de conversão.' },
+      { title: 'Slogan claro e objetivo', desc: '"Tudo para o Campo" é direto, memorável e comunica a amplitude de produtos. Boa base para construção de identidade de marca mais forte.' },
+    ],
+    priorities: [
+      { order: 1, action: 'Criar site profissional com domínio próprio e e-mail corporativo', impact: 'Credibilidade imediata, indexação no Google e confiança do cliente de alto ticket', timeframe: 'Imediato' },
+      { order: 2, action: 'Configurar Business Manager e ativar Meta Ads com criativos profissionais', impact: 'Alcançar produtores rurais ativos na região com mensagens segmentadas', timeframe: '30 dias' },
+      { order: 3, action: 'Produzir série de vídeos educativos (nutrição animal, manejo, dicas de campo)', impact: 'Autoridade de marca, engajamento orgânico e diferenciação da concorrência', timeframe: '30–60 dias' },
+      { order: 4, action: 'Padronizar identidade visual em todos os canais digitais', impact: 'Memorização, profissionalismo e coerência de marca percebida', timeframe: '60 dias' },
+      { order: 5, action: 'Ativar Google Meu Negócio com fotos profissionais e avaliações', impact: 'Aparecer nas buscas locais e aumentar tráfego físico para a loja', timeframe: '30 dias' },
+    ],
+    competitors: [
+      { name: 'Agropecuária Boa Vista', tipo: 'Loja de insumos e rações', digital: 'Fraca', ameaca: 'Alta', fraqueza: 'Presença só no WhatsApp, sem Instagram ativo e sem site — vulnerável a quem ocupar o digital primeiro' },
+      { name: 'Casa do Agricultor Franca', tipo: 'Insumos agrícolas e veterinários', digital: 'Regular', ameaca: 'Alta', fraqueza: 'Feed desatualizado há meses, sem tráfego pago e fotos de baixa qualidade que não comunicam credibilidade' },
+      { name: 'Agropet Central', tipo: 'Pet + agropecuária', digital: 'Fraca', ameaca: 'Média', fraqueza: 'Foco em pet shop diluí o posicionamento agro — não fala com o produtor rural de forma específica' },
+      { name: 'Rural Center Franca', tipo: 'Ferramentas e insumos rurais', digital: 'Inexistente', ameaca: 'Média', fraqueza: 'Sem nenhuma presença digital identificada — opera 100% por indicação, sem alcance ativo' },
+      { name: 'Agromais (rede regional)', tipo: 'Rede de lojas agropecuárias', digital: 'Regular', ameaca: 'Média', fraqueza: 'Comunicação genérica de rede, sem personalização local — não cria vínculo com o cliente de Franca' },
+    ],
+    plan: {
+      name: 'FRAME Gold',
+      price: 'R$ 3.500',
+      reason: 'A Santamelia está no início da jornada digital — sem tráfego pago, sem conteúdo consistente, com site básico e identidade visual a desenvolver. O FRAME Gold (4 vídeos/mês + consultoria estratégica + Meta Ads) é o pacote ideal para esta fase: entrega volume suficiente para construir consistência e presença, inclui gestão de tráfego para testar criativos no Meta, e mantém o investimento compatível com a realidade de uma PME do interior que ainda está validando o retorno do marketing digital. Após 3–4 meses com resultados mensuráveis, o upgrade para Platinum se torna natural e fundamentado em dados.',
+    },
+  };
+
+  // ══════════════════════════════════════════════════════
+  //  DIAGNÓSTICO EXEMPLO — Vitrina Moda
+  // ══════════════════════════════════════════════════════
+  const VITRINA_DIAG = {
+    id: 'vitrina-moda-2026',
+    clientName: 'Vitrina Moda',
+    instagram: 'vitrinamoda_franca',
+    site: 'sem site próprio',
+    segmento: 'Boutique feminina — roupas, acessórios e consultoria de estilo',
+    date: 'Diagnóstico realizado em: Abril de 2026',
+    scores: [
+      { label: 'Presença Digital',  value: '5/10', note: 'Regular',  color: '#f97316' },
+      { label: 'Identidade Visual', value: '6/10', note: 'Regular',  color: '#f97316' },
+      { label: 'Conteúdo',         value: '4/10', note: 'Regular',  color: '#f97316' },
+      { label: 'Tráfego Pago',     value: '0/10', note: 'Ausente',  color: '#6b7280' },
+    ],
+    macro: {
+      maturidade: 'Em desenvolvimento',
+      potencial: 'Alto',
+      urgencia: 'Alta',
+      setor: 'O varejo de moda feminina no interior de SP é altamente competitivo offline, mas digitalmente ainda incipiente. O crescimento do e-commerce nacional pressiona lojas locais — quem não aparecer no feed do Instagram e no Google Ads nos próximos 12 meses vai perder fatia para marcas de fora da cidade.',
+      oportunidade: 'Dominar o segmento de moda premium em Franca com vídeo e foto profissional. A moda é o setor de maior apelo visual — criativos bem produzidos têm CTR 3x maior que foto de celular. Nenhum concorrente local usa produção audiovisual profissional.',
+      concorrencia: 'Concorrentes locais identificados com presença básica no Instagram — fotos de baixa qualidade, sem consistência visual e sem tráfego pago ativo. Lojistas dependem de indicação e clientela fidelizada. A janela para diferenciação visual é ampla e imediata.',
+    },
+    critical: [
+      { title: 'Ausência total de tráfego pago', desc: 'Sem Meta Ads ativo, a loja compete apenas pelo alcance orgânico — que o algoritmo limita progressivamente. Enquanto isso, e-commerces nacionais investem centenas de reais por dia no feed das mesmas clientes da Vitrina.' },
+      { title: 'Feed sem consistência visual e editorial', desc: 'Mix de fotos de produto com celular, reposts de marcas e stories aleatórios. Sem paleta definida, sem tom de voz e sem cadência de publicação, o perfil não gera memorização nem fidelização.' },
+      { title: 'Sem site próprio — link no bio leva para WhatsApp', desc: 'O WhatsApp como único destino digital limita a jornada do cliente e não gera indexação no Google. Uma landing page com catálogo e WhatsApp integrado converteria mais e criaria presença nas buscas.' },
+      { title: 'Ausência de prova social estruturada', desc: 'Nenhum destaque de depoimentos, avaliações ou clientes reais no feed. Em moda, a prova social (clientes usando as peças) é um dos maiores gatilhos de compra — e não está sendo explorada.' },
+      { title: 'Conteúdo de bastidores e processo inexistente', desc: 'Novas coleções, chegada de produtos, consultoria de estilo e o dia a dia da loja não são mostrados. O conteúdo de bastidores gera conexão emocional com a marca — fator decisivo no varejo de moda local.' },
+    ],
+    positive: [
+      { title: 'Produto com altíssimo apelo visual', desc: 'Moda feminina é o segmento de maior engajamento no Instagram. Peças bem fotografadas e filmadas geram compartilhamento orgânico, saves e conversões diretas — o produto já é o ativo de conteúdo.' },
+      { title: 'Base de clientes fiel com potencial de reativação', desc: 'Clientes recorrentes são o maior ativo de qualquer boutique. Com conteúdo consistente e remarketing no Meta Ads, a Vitrina pode reativar clientes inativos e aumentar a frequência de compra.' },
+      { title: 'Mercado local com baixíssima concorrência digital', desc: 'Nenhum concorrente identificado com vídeo profissional, tráfego pago ativo e identidade visual forte. Quem entrar primeiro vai ocupar esse espaço por anos.' },
+      { title: 'Ticket médio elevado e clientela premium', desc: 'O posicionamento de boutique justifica e demanda conteúdo de alta qualidade. Um vídeo bem produzido reforça o preço cobrado e afasta o público que barganha — efeito direto na margem.' },
+      { title: 'Localização estratégica com tráfego físico', desc: 'Loja em ponto de movimento garante visibilidade offline. Com Google Meu Negócio ativo e vídeos de vitrine publicados, o digital amplifica o que já funciona presencialmente.' },
+    ],
+    priorities: [
+      { order: 1, action: 'Produzir ensaio fotográfico e de vídeo profissional com nova coleção', impact: 'Material de alta qualidade para 30 dias de conteúdo e criativos de anúncio', timeframe: 'Imediato' },
+      { order: 2, action: 'Ativar Meta Ads com criativos da Flare — foco em vídeo de produto e reels', impact: 'Alcançar mulheres de 25-45 anos em Franca e região com renda compatível', timeframe: '30 dias' },
+      { order: 3, action: 'Criar landing page com catálogo da coleção + botão WhatsApp', impact: 'Presença no Google, jornada de compra mais fluída e aumento de conversão', timeframe: '30 dias' },
+      { order: 4, action: 'Estruturar série de conteúdo de bastidores e consultoria de estilo', impact: 'Autoridade de marca, conexão emocional e engajamento orgânico crescente', timeframe: '30–60 dias' },
+      { order: 5, action: 'Ativar Google Meu Negócio com fotos profissionais e vídeos da loja', impact: 'Aparecer nas buscas locais por "boutique em Franca" e aumentar visitas físicas', timeframe: '30 dias' },
+    ],
+    competitors: [
+      { name: 'Renner / Riachuelo (lojas físicas)', tipo: 'Varejo de moda de massa', digital: 'Forte', ameaca: 'Alta', fraqueza: 'Comunicação genérica e sem personalização — não cria vínculo emocional com a cliente local de Franca' },
+      { name: 'Boutique Ella Franca', tipo: 'Moda feminina premium', digital: 'Regular', ameaca: 'Alta', fraqueza: 'Feed inconsistente, fotos amadoras e sem vídeo — o produto não é bem apresentado e perde venda online' },
+      { name: 'Armarinho São João', tipo: 'Moda feminina popular', digital: 'Fraca', ameaca: 'Média', fraqueza: 'Foco em preço baixo, sem posicionamento premium — não disputa o mesmo público da Vitrina' },
+      { name: 'Lojas do Shopee/Shein (e-commerce)', tipo: 'Fast fashion online', digital: 'Forte', ameaca: 'Média', fraqueza: 'Sem experiência física, sem consultoria de estilo, sem relacionamento — perde no que boutique local tem de melhor' },
+      { name: 'Brechó Premium Franca', tipo: 'Moda sustentável/brechó', digital: 'Regular', ameaca: 'Baixa', fraqueza: 'Público diferente, sem ameaça direta ao posicionamento de coleção nova e exclusividade' },
+    ],
+    plan: {
+      name: 'FRAME Gold',
+      price: 'R$ 3.500',
+      reason: 'A Vitrina Moda tem base sólida — produto com apelo visual, clientela fiel e mercado local sem concorrência digital real. O FRAME Gold (4 vídeos/mês + Meta Ads + consultoria) é o ponto de entrada ideal: entrega volume suficiente para construir consistência no feed, viabiliza tráfego pago com criativos profissionais, e mantém o investimento compatível com o momento da loja. O resultado dos primeiros 3 meses vai fundamentar o crescimento para o Platinum, quando fizer sentido escalar o volume e adicionar Google Ads.',
+    },
+  };
+
+  // ══════════════════════════════════════════════════════
+  //  JORNADA DO CLIENTE (constante — igual para todos)
+  // ══════════════════════════════════════════════════════
+  const DIAG = {
+    clientName: 'Cliente Exemplo S/A',
+    date: 'Diagnóstico realizado em: Abril de 2026',
+
+    scores: [
+      { label: 'Presença Digital',  value: '3/10', note: 'Crítico',  color: '#ef4444' },
+      { label: 'Identidade Visual', value: '6/10', note: 'Regular',  color: '#f97316' },
+      { label: 'Conteúdo',         value: '2/10', note: 'Crítico',  color: '#ef4444' },
+      { label: 'Tráfego Pago',     value: '0/10', note: 'Ausente',  color: '#6b7280' },
+    ],
+
+    critical: [
+      { title: 'Ausência de conteúdo consistente', desc: 'Nenhuma postagem nos últimos 30 dias. O algoritmo penaliza perfis inativos, perdendo alcance orgânico.' },
+      { title: 'Tráfego pago inexistente',         desc: 'A empresa não investe em anúncios pagos. Concorrentes com menor qualidade aparecem na frente.' },
+      { title: 'Identidade visual inconsistente',  desc: 'Variação de paleta, fontes e tom de voz entre canais. Passa falta de profissionalismo ao cliente.' },
+      { title: 'Vídeos de baixa qualidade',        desc: 'Conteúdo gravado com celular sem direção criativa. Não representa o nível do produto/serviço oferecido.' },
+      { title: 'Bio e link do Instagram genéricos', desc: 'A bio não comunica o diferencial da empresa. Oportunidade de captura desperdiçada.' },
+    ],
+
+    positive: [
+      { title: 'Produto/serviço com qualidade comprovada', desc: 'Excelente reputação no mercado local. Base sólida para construir autoridade digital.' },
+      { title: 'Ticket médio alto',                       desc: 'Perfil de negócio premium. Conteúdo de qualidade justifica e reforça o preço cobrado.' },
+      { title: 'Base de clientes fidelizados',            desc: 'Prova social latente. Depoimentos e cases reais prontos para serem capturados.' },
+      { title: 'Mercado local com pouca concorrência digital', desc: 'Janela de oportunidade aberta. Quem entrar primeiro conquista a autoridade.' },
+    ],
+
+    plan: {
+      name:  'FRAME Platinum',
+      price: 'R$ 4.500',
+      reason: 'Com 8 vídeos mensais, gestão de Meta e Google Ads, consultoria estratégica e ensaio corporativo de brinde, o FRAME Platinum entrega o volume e a variedade de conteúdo necessários para superar os pontos críticos identificados no diagnóstico — especialmente a ausência de conteúdo consistente e de tráfego pago — sem sobrecarregar o orçamento com o pacote Black antes de validar os primeiros resultados.',
+    },
+  };
+
+  // ══════════════════════════════════════════════════════
+  //  JORNADA DO CLIENTE (fases interativas)
+  // ══════════════════════════════════════════════════════
+  const JOURNEY = [
+    {
+      phase: '01',
+      name: 'Onboarding',
+      period: 'Semana 1',
+      color: '#f97316',
+      summary: 'Alinhamento total entre a Flare e a sua empresa antes de qualquer câmera ser ligada.',
+      steps: [
+        { done: false, text: 'Reunião de kickoff: apresentação da equipe e definição de expectativas' },
+        { done: false, text: 'Preenchimento do briefing completo da marca' },
+        { done: false, text: 'Análise dos canais digitais existentes (Instagram, site, Google Meu Negócio)' },
+        { done: false, text: 'Definição de tom de voz, paleta visual e referências criativas' },
+        { done: false, text: 'Entrega do plano de conteúdo do 1º mês' },
+      ],
+    },
+    {
+      phase: '02',
+      name: 'Kickoff de Produção',
+      period: 'Semana 2',
+      color: '#a855f7',
+      summary: 'Primeira sessão de captação: vídeos e fotos com direção criativa da Flare.',
+      steps: [
+        { done: false, text: 'Roteiro das primeiras peças aprovado' },
+        { done: false, text: 'Agendamento e confirmação do dia de captação' },
+        { done: false, text: '1ª captação realizada (vídeos institucionais + conteúdo para redes)' },
+        { done: false, text: 'Edição e revisão das primeiras entregas (até 3 dias após captação)' },
+        { done: false, text: 'Aprovação e publicação dos primeiros conteúdos' },
+      ],
+    },
+    {
+      phase: '03',
+      name: 'Primeira Captação',
+      period: 'Semanas 2–3',
+      color: '#3b82f6',
+      summary: 'Conteúdo ao vivo: primeiras peças publicadas, métricas iniciais acompanhadas.',
+      steps: [
+        { done: false, text: 'Calendário editorial mensal definido e compartilhado' },
+        { done: false, text: 'Primeiros vídeos publicados nos canais acordados' },
+        { done: false, text: 'Monitoramento de métricas: alcance, retenção e engajamento' },
+        { done: false, text: 'Ajustes rápidos de formato e linguagem com base nos dados da 1ª semana' },
+        { done: false, text: 'Relatório de performance semanal entregue' },
+      ],
+    },
+    {
+      phase: '04',
+      name: 'Ajustando a BM do Instagram',
+      period: 'Semanas 1–2',
+      color: '#ec4899',
+      summary: 'Configuração técnica da Business Manager para que os anúncios rodem sem travamento.',
+      steps: [
+        { done: false, text: 'Acesso à conta Business Manager do cliente liberado para a Flare' },
+        { done: false, text: 'Pixel do Meta instalado e verificado no site' },
+        { done: false, text: 'Catálogo de produtos/serviços configurado (se aplicável)' },
+        { done: false, text: 'Públicos personalizados e lookalike criados' },
+        { done: false, text: 'Primeiras campanhas de tráfego ativas com criativos da Flare' },
+        { done: false, text: 'Monitoramento diário nas primeiras 72h após subida dos anúncios' },
+      ],
+    },
+  ];
+
+  // ══════════════════════════════════════════════════════
+  //  CONFIG
+  // ══════════════════════════════════════════════════════
+  const GEMINI_KEY = 'AIzaSyARFOkbwo66rbfzMJKPPkTsdk0qqVEw5JU';
+  const GEMINI_MODEL = 'gemini-2.5-flash';
+
+  // ══════════════════════════════════════════════════════
+  //  AUTENTICAÇÃO
+  // ══════════════════════════════════════════════════════
+  const CREDENTIALS = { user: 'RICHARD', pass: 'Maria123@' };
+
+  function diagLogin() {
+    const u = document.getElementById('loginUser').value.trim().toUpperCase();
+    const p = document.getElementById('loginPass').value;
+    if (u === CREDENTIALS.user && p === CREDENTIALS.pass) {
+      document.getElementById('loginModal').style.display = 'none';
+      document.getElementById('loginError').style.display = 'none';
+      unlockDiag();
+    } else {
+      document.getElementById('loginError').style.display = 'block';
+      document.getElementById('loginPass').value = '';
+    }
+  }
+
+  // ══════════════════════════════════════════════════════
+  //  ESTADO GLOBAL
+  // ══════════════════════════════════════════════════════
+  let activeDiag = null;
+
+  // ══════════════════════════════════════════════════════
+  //  AUTH
+  // ══════════════════════════════════════════════════════
+  function diagLogout() {
+    document.getElementById('diagContent').style.display = 'none';
+    document.getElementById('diagGate').style.display = 'block';
+    document.getElementById('loginUser').value = '';
+    document.getElementById('loginPass').value = '';
+    activeDiag = null;
+  }
+
+  function unlockDiag() {
+    document.getElementById('diagGate').style.display = 'none';
+    document.getElementById('diagContent').style.display = 'block';
+    loadApiKey();
+    seedSantaMelia();
+    switchTab('pesquisa');
+    document.getElementById('diagnostico').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // ══════════════════════════════════════════════════════
+  //  TABS
+  // ══════════════════════════════════════════════════════
+  function switchTab(tab) {
+    ['pesquisa','historico','atual'].forEach(t => {
+      document.getElementById('panel-' + t).style.display = t === tab ? 'block' : 'none';
+      const btn = document.getElementById('tab-' + t);
+      if (btn) {
+        btn.style.borderBottomColor = t === tab ? 'var(--laranja)' : 'transparent';
+        btn.style.color = t === tab ? 'var(--branco)' : 'rgba(255,255,255,0.35)';
+      }
+    });
+    if (tab === 'historico') renderHistory();
+    if (tab === 'atual' && activeDiag) renderDiag(activeDiag);
+  }
+
+  // ══════════════════════════════════════════════════════
+  //  API KEY
+  // ══════════════════════════════════════════════════════
+  function saveApiKey() {
+    const key = document.getElementById('apiKeyInput').value.trim();
+    if (!key) return;
+    localStorage.setItem('flare_api_key', key);
+    const st = document.getElementById('apiKeyStatus');
+    st.style.display = 'inline';
+    setTimeout(() => { st.style.display = 'none'; }, 2500);
+  }
+
+  function loadApiKey() {
+    document.getElementById('apiKeyInput').value = GEMINI_KEY;
+    localStorage.setItem('flare_api_key', GEMINI_KEY);
+    document.getElementById('apiKeyStatus').style.display = 'inline';
+    document.getElementById('apiKeyStatus').textContent = '✓ Gemini configurado';
+  }
+
+  // ══════════════════════════════════════════════════════
+  //  HISTÓRICO (localStorage)
+  // ══════════════════════════════════════════════════════
+  function getHistory() {
+    try { return JSON.parse(localStorage.getItem('flare_diagnoses') || '[]'); }
+    catch(e) { return []; }
+  }
+
+  function saveToHistory(diag) {
+    const history = getHistory();
+    const idx = history.findIndex(d => d.id === diag.id);
+    if (idx >= 0) history[idx] = diag;
+    else history.unshift(diag);
+    localStorage.setItem('flare_diagnoses', JSON.stringify(history));
+  }
+
+  function seedSantaMelia() {
+    const history = getHistory();
+    if (!history.find(d => d.id === SANTA_MELIA_DIAG.id)) {
+      saveToHistory(SANTA_MELIA_DIAG);
+    }
+    if (!history.find(d => d.id === VITRINA_DIAG.id)) {
+      saveToHistory(VITRINA_DIAG);
+    }
+  }
+
+  function clearHistory() {
+    if (!confirm('Limpar todo o histórico? Esta ação não pode ser desfeita.')) return;
+    localStorage.removeItem('flare_diagnoses');
+    renderHistory();
+  }
+
+  function renderHistory() {
+    const history = getHistory();
+    const list  = document.getElementById('historyList');
+    const empty = document.getElementById('historyEmpty');
+    if (history.length === 0) {
+      list.innerHTML = '';
+      empty.style.display = 'block';
+      return;
+    }
+    empty.style.display = 'none';
+    list.innerHTML = history.map(d => `
+      <div style="background:var(--cinza-medio);border:1px solid var(--cinza-borda);display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:0;transition:border-color 0.2s;"
+           onmouseover="this.style.borderColor='rgba(249,115,22,0.35)'" onmouseout="this.style.borderColor='var(--cinza-borda)'">
+        <div onclick="openDiag('${d.id}')" style="padding:24px 28px;cursor:pointer;flex:1;">
+          <div style="font-size:15px;font-weight:700;margin-bottom:4px;">${d.clientName}</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.35);">
+            ${d.instagram ? '@'+d.instagram+' · ' : ''}${d.segmento || ''}
+          </div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.2);margin-top:6px;">${d.date}</div>
+        </div>
+        <div style="padding:0 24px;display:flex;gap:8px;">
+          <span style="display:inline-block;padding:4px 12px;font-size:11px;font-weight:700;letter-spacing:0.05em;background:rgba(249,115,22,0.1);color:var(--laranja);">${d.plan ? d.plan.name : '—'}</span>
+        </div>
+        <div style="padding:0 24px;display:flex;gap:8px;border-left:1px solid var(--cinza-borda);">
+          <button onclick="openDiag('${d.id}')" style="background:none;border:none;color:rgba(255,255,255,0.45);font-family:inherit;font-size:12px;cursor:pointer;padding:8px 0;" onmouseover="this.style.color='var(--laranja)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Ver</button>
+          <button onclick="deleteDiag('${d.id}')" style="background:none;border:none;color:rgba(239,68,68,0.45);font-family:inherit;font-size:12px;cursor:pointer;padding:8px 0;" onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='rgba(239,68,68,0.45)'">Excluir</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function openDiag(id) {
+    const diag = getHistory().find(d => d.id === id);
+    if (!diag) return;
+    activeDiag = diag;
+    renderDiag(diag);
+    renderJourney();
+    switchTab('atual');
+  }
+
+  function deleteDiag(id) {
+    if (!confirm('Excluir este diagnóstico?')) return;
+    const history = getHistory().filter(d => d.id !== id);
+    localStorage.setItem('flare_diagnoses', JSON.stringify(history));
+    if (activeDiag && activeDiag.id === id) activeDiag = null;
+    renderHistory();
+  }
+
+  // ══════════════════════════════════════════════════════
+  //  GERAR DIAGNÓSTICO COM CLAUDE API
+  // ══════════════════════════════════════════════════════
+  async function gerarDiagnostico() {
+    const nome     = document.getElementById('f-nome').value.trim();
+    const instagram= document.getElementById('f-instagram').value.trim().replace('@','');
+    const site     = document.getElementById('f-site').value.trim();
+    const segmento = document.getElementById('f-segmento').value.trim();
+    const obs      = document.getElementById('f-obs').value.trim();
+    const apiKey   = localStorage.getItem('flare_api_key') || document.getElementById('apiKeyInput').value.trim();
+
+    const errEl = document.getElementById('gerarError');
+    errEl.style.display = 'none';
+
+    if (!nome) { errEl.textContent = 'Informe o nome da empresa.'; errEl.style.display = 'block'; return; }
+    if (!apiKey) { errEl.textContent = 'Informe a chave da API Anthropic acima.'; errEl.style.display = 'block'; return; }
+
+    // UI de loading
+    const btn = document.getElementById('btnGerar');
+    btn.textContent = '⏳ Analisando...';
+    btn.disabled = true;
+    const loading = document.getElementById('loadingState');
+    const loadMsg = document.getElementById('loadingMsg');
+    const loadBar = document.getElementById('loadingBar');
+    loading.style.display = 'block';
+
+    const msgs = [
+      'Coletando informações da empresa...',
+      'Analisando presença digital...',
+      'Identificando pontos críticos...',
+      'Mapeando oportunidades...',
+      'Calculando plano ideal...',
+      'Finalizando diagnóstico...',
+    ];
+    let msgIdx = 0;
+    loadMsg.textContent = msgs[0];
+    loadBar.style.width = '5%';
+    const msgInterval = setInterval(() => {
+      msgIdx = Math.min(msgIdx + 1, msgs.length - 1);
+      loadMsg.textContent = msgs[msgIdx];
+      loadBar.style.width = Math.min(90, (msgIdx + 1) * 15) + '%';
+    }, 2200);
+
+    const prompt = `Você é um especialista sênior em diagnóstico de presença digital para PMEs brasileiras, com foco em marketing audiovisual e gestão de redes sociais. Você trabalha para a Flare Productions, uma produtora audiovisual estratégica B2B de Franca-SP.
+
+Analise a empresa abaixo e retorne EXCLUSIVAMENTE um JSON válido (sem markdown, sem texto antes ou depois, só o JSON):
+
+Empresa: ${nome}
+Instagram: @${instagram || 'não informado'}
+Site: ${site || 'não informado'}
+Segmento: ${segmento || 'não informado'}
+Observações: ${obs || 'nenhuma'}
+
+Retorne este JSON exato (preencha todos os campos com análise real e específica para esta empresa):
+{
+  "clientName": "${nome}",
+  "instagram": "${instagram}",
+  "site": "${site}",
+  "segmento": "${segmento}",
+  "date": "Diagnóstico realizado em: ${new Date().toLocaleDateString('pt-BR', {month:'long', year:'numeric'})}",
+  "scores": [
+    {"label": "Presença Digital", "value": "X/10", "note": "Crítico|Regular|Bom|Excelente", "color": "#ef4444|#f97316|#22c55e|#3b82f6"},
+    {"label": "Identidade Visual", "value": "X/10", "note": "...", "color": "..."},
+    {"label": "Conteúdo", "value": "X/10", "note": "...", "color": "..."},
+    {"label": "Tráfego Pago", "value": "X/10", "note": "...", "color": "..."}
+  ],
+  "macro": {
+    "maturidade": "Iniciante|Em desenvolvimento|Consolidado|Avançado",
+    "potencial": "Alto|Médio|Baixo",
+    "urgencia": "Alta|Média|Baixa",
+    "setor": "análise do cenário do setor no interior de SP — tamanho de mercado, tendências, oportunidade digital",
+    "oportunidade": "principal oportunidade estratégica para esta empresa neste momento — seja específico e direto",
+    "concorrencia": "análise da concorrência digital local — quem concorre, como estão digitalmente, qual a vantagem disponível"
+  },
+  "critical": [
+    {"title": "título do problema", "desc": "descrição detalhada e específica do problema e seu impacto direto no negócio"},
+    ...entre 4 e 6 pontos críticos reais e específicos
+  ],
+  "positive": [
+    {"title": "título do ponto positivo", "desc": "descrição detalhada do ponto positivo e seu potencial como alavanca de crescimento"},
+    ...entre 3 e 5 pontos positivos reais
+  ],
+  "priorities": [
+    {"order": 1, "action": "ação específica e concreta", "impact": "resultado mensurável esperado", "timeframe": "Imediato|30 dias|60 dias|90 dias"},
+    ...entre 4 e 5 prioridades ordenadas por impacto
+  ],
+  "competitors": [
+    {"name": "Nome real do concorrente direto", "tipo": "tipo do negócio", "digital": "Inexistente|Fraca|Regular|Forte", "ameaca": "Alta|Média|Baixa", "fraqueza": "principal fraqueza digital que abre oportunidade para o cliente"},
+    ...exatamente 5 concorrentes reais ou prováveis na região (cidade/interior de SP), ordenados do maior para o menor ameaça
+  ],
+  "plan": {
+    "name": "FRAME Gold|FRAME Platinum|FRAME Black",
+    "price": "R$ 3.500|R$ 4.500|R$ 5.300",
+    "reason": "justificativa detalhada de 3-4 frases explicando por que este pacote é o ideal para esta empresa neste momento, referenciando os pontos críticos identificados e o potencial de crescimento"
+  }
+}
+
+Regras para os scores:
+- Use "#ef4444" para notas Crítico (0-3)
+- Use "#f97316" para notas Regular (4-6)
+- Use "#22c55e" para notas Bom (7-8)
+- Use "#3b82f6" para Excelente (9-10)
+
+Pacotes disponíveis da Flare Productions:
+- FRAME Gold: R$ 3.500/mês — 4 vídeos + consultoria + Meta Ads (ideal para quem está começando)
+- FRAME Platinum: R$ 4.500/mês — 8 vídeos + consultoria + Meta+Google Ads + ensaio corporativo (ideal para acelerar)
+- FRAME Black: R$ 5.300/mês — 12 vídeos + consultoria + Meta+Google Ads + landing page (ideal para dominar)
+
+Seja específico, direto e profissional. Foque em impacto real no negócio. Toda análise deve ser baseada no contexto do mercado do interior de São Paulo.`;
+
+    try {
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${apiKey}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: { temperature: 0.8, maxOutputTokens: 8192 }
+          })
+        }
+      );
+
+      clearInterval(msgInterval);
+      loadBar.style.width = '100%';
+
+      if (!response.ok) {
+        const err = await response.json();
+        throw new Error(err.error?.message || 'Erro na API Gemini: ' + response.status);
+      }
+
+      const data = await response.json();
+      const parts = data.candidates?.[0]?.content?.parts || [];
+      let raw = (parts.find(p => !p.thought && p.text) || parts[0])?.text?.trim();
+      if (!raw) throw new Error('Resposta vazia do Gemini — ' + (data.error?.message || data.candidates?.[0]?.finishReason || 'sem conteúdo'));
+
+      // Limpa possível markdown wrapper
+      raw = raw.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/i, '');
+
+      const diag = JSON.parse(raw);
+      diag.id = 'diag-' + Date.now();
+
+      saveToHistory(diag);
+      activeDiag = diag;
+
+      setTimeout(() => {
+        loading.style.display = 'none';
+        btn.textContent = 'Gerar diagnóstico com IA';
+        btn.disabled = false;
+        loadBar.style.width = '0%';
+        renderDiag(diag);
+        renderJourney();
+        switchTab('atual');
+      }, 600);
+
+    } catch(e) {
+      clearInterval(msgInterval);
+      loading.style.display = 'none';
+      btn.textContent = 'Gerar diagnóstico com IA';
+      btn.disabled = false;
+      errEl.textContent = 'Erro: ' + e.message;
+      errEl.style.display = 'block';
+    }
+  }
+
+  // ══════════════════════════════════════════════════════
+  //  RENDERIZAÇÃO DO DIAGNÓSTICO
+  // ══════════════════════════════════════════════════════
+  const PACKAGES_DATA = [
+    { name: 'FRAME Gold', price: 'R$ 3.500', periodo: '/mês · mín. 6 meses', items: ['4 vídeos profissionais/mês', 'Consultoria estratégica mensal', 'Gestão Meta Ads', 'Roteiro + filmagem + edição'] },
+    { name: 'FRAME Platinum', price: 'R$ 4.500', periodo: '/mês · mín. 6 meses', items: ['8 vídeos profissionais/mês', 'Consultoria estratégica mensal', 'Gestão Meta + Google Ads', 'Roteiro + filmagem + edição', 'Brinde: ensaio corporativo 20 fotos'] },
+    { name: 'FRAME Black', price: 'R$ 5.300', periodo: '/mês · mín. 6 meses', items: ['12 vídeos profissionais/mês', 'Consultoria estratégica mensal', 'Gestão Meta + Google Ads', 'Roteiro + filmagem + edição', 'Brinde: landing page profissional'] },
+  ];
+
+  const AVULSOS_DATA = [
+    { name: 'Drone', price: 'R$ 750' },
+    { name: 'Fotos corporativas', price: 'R$ 500' },
+    { name: 'Vídeo sem drone', price: 'R$ 500' },
+    { name: 'Vídeo com drone', price: 'R$ 1.000' },
+    { name: 'Landing page personalizada', price: 'R$ 1.200' },
+    { name: 'Consultoria de branding', price: 'R$ 2.500' },
+  ];
+
+  function renderDiag(diag) {
+    if (!diag) return;
+    document.getElementById('clientNameHeading').textContent = diag.clientName;
+    document.getElementById('diagDate').textContent = diag.date;
+
+    // Scores
+    document.getElementById('scoreCards').innerHTML = diag.scores.map(s => `
+      <div style="background:var(--cinza-medio);border:1px solid var(--cinza-borda);padding:32px 28px;">
+        <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:16px;">${s.label}</div>
+        <div style="font-size:42px;font-weight:700;letter-spacing:-0.04em;color:${s.color};line-height:1;margin-bottom:8px;">${s.value}</div>
+        <div style="font-size:11px;color:${s.color};letter-spacing:0.1em;text-transform:uppercase;">${s.note}</div>
+      </div>
+    `).join('');
+
+    // Visão Macro
+    const macroEl = document.getElementById('macroSection');
+    if (diag.macro) {
+      const maturidadeColor = diag.macro.maturidade === 'Iniciante' ? '#ef4444' : diag.macro.maturidade === 'Em desenvolvimento' ? '#f97316' : '#22c55e';
+      const potencialColor  = diag.macro.potencial  === 'Alto'       ? '#22c55e' : diag.macro.potencial  === 'Médio'            ? '#f97316' : '#6b7280';
+      const urgenciaColor   = diag.macro.urgencia   === 'Alta'       ? '#ef4444' : diag.macro.urgencia   === 'Média'            ? '#f97316' : '#22c55e';
+      macroEl.innerHTML = `
+        <span class="label">Visão Macro</span>
+        <h2 class="h2" style="margin-bottom:32px;">Contexto de Mercado e Oportunidade</h2>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:2px;">
+          <div style="background:var(--cinza-medio);border:1px solid var(--cinza-borda);padding:28px 24px;">
+            <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:10px;">Maturidade Digital</div>
+            <div style="font-size:22px;font-weight:700;color:${maturidadeColor};">${diag.macro.maturidade}</div>
+          </div>
+          <div style="background:var(--cinza-medio);border:1px solid var(--cinza-borda);padding:28px 24px;">
+            <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:10px;">Potencial de Crescimento</div>
+            <div style="font-size:22px;font-weight:700;color:${potencialColor};">${diag.macro.potencial}</div>
+          </div>
+          <div style="background:var(--cinza-medio);border:1px solid var(--cinza-borda);padding:28px 24px;">
+            <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:10px;">Urgência de Ação</div>
+            <div style="font-size:22px;font-weight:700;color:${urgenciaColor};">${diag.macro.urgencia}</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;">
+          <div style="background:var(--cinza-medio);border:1px solid var(--cinza-borda);padding:28px 24px;">
+            <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;">Cenário do Setor</div>
+            <p style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;">${diag.macro.setor}</p>
+          </div>
+          <div style="background:var(--cinza-medio);border:1px solid var(--cinza-borda);padding:28px 24px;">
+            <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--laranja);margin-bottom:12px;">Principal Oportunidade</div>
+            <p style="font-size:13px;color:rgba(255,255,255,0.75);line-height:1.7;font-weight:500;">${diag.macro.oportunidade}</p>
+          </div>
+          <div style="background:var(--cinza-medio);border:1px solid var(--cinza-borda);padding:28px 24px;">
+            <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;">Análise da Concorrência</div>
+            <p style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;">${diag.macro.concorrencia}</p>
+          </div>
+        </div>
+      `;
+    } else {
+      macroEl.innerHTML = '';
+    }
+
+    // Críticos e Positivos
+    document.getElementById('criticalList').innerHTML = diag.critical.map(p => `
+      <li onclick="toggleItem(this)" style="padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.06);cursor:pointer;list-style:none;">
+        <div style="display:flex;align-items:flex-start;gap:14px;">
+          <span style="color:#ef4444;font-size:11px;margin-top:3px;flex-shrink:0;font-weight:700;">✕</span>
+          <div style="flex:1;">
+            <div style="font-size:14px;font-weight:600;color:var(--branco);line-height:1.4;">${p.title}</div>
+            <div class="item-desc" style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.65;margin-top:8px;display:none;">${p.desc}</div>
+          </div>
+          <span class="toggle-arrow" style="color:rgba(255,255,255,0.2);font-size:14px;flex-shrink:0;transition:all 0.2s;">▾</span>
+        </div>
+      </li>
+    `).join('');
+
+    document.getElementById('positiveList').innerHTML = diag.positive.map(p => `
+      <li onclick="toggleItem(this)" style="padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.06);cursor:pointer;list-style:none;">
+        <div style="display:flex;align-items:flex-start;gap:14px;">
+          <span style="color:#22c55e;font-size:11px;margin-top:3px;flex-shrink:0;font-weight:700;">✓</span>
+          <div style="flex:1;">
+            <div style="font-size:14px;font-weight:600;color:var(--branco);line-height:1.4;">${p.title}</div>
+            <div class="item-desc" style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.65;margin-top:8px;display:none;">${p.desc}</div>
+          </div>
+          <span class="toggle-arrow" style="color:rgba(255,255,255,0.2);font-size:14px;flex-shrink:0;transition:all 0.2s;">▾</span>
+        </div>
+      </li>
+    `).join('');
+
+    // Concorrentes
+    const compEl = document.getElementById('competitorsSection');
+    if (diag.competitors && diag.competitors.length) {
+      const digitalColor = v => v === 'Forte' ? '#22c55e' : v === 'Regular' ? '#f97316' : v === 'Fraca' ? '#ef4444' : '#6b7280';
+      const ameacaColor  = v => v === 'Alta'  ? '#ef4444' : v === 'Média'   ? '#f97316' : '#22c55e';
+      compEl.innerHTML = `
+        <span class="label">Análise Competitiva</span>
+        <h2 class="h2" style="margin-bottom:32px;">5 Maiores Concorrentes na Região</h2>
+        <div style="display:flex;flex-direction:column;gap:2px;">
+          <div style="display:grid;grid-template-columns:2fr 1.5fr 1fr 1fr 2fr;gap:0;background:var(--cinza-claro);border:1px solid var(--cinza-borda);padding:12px 20px;">
+            <span style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Concorrente</span>
+            <span style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Tipo</span>
+            <span style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Presença Digital</span>
+            <span style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Ameaça</span>
+            <span style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Fraqueza / Oportunidade</span>
+          </div>
+          ${diag.competitors.map((c, i) => `
+            <div style="display:grid;grid-template-columns:2fr 1.5fr 1fr 1fr 2fr;gap:0;background:var(--cinza-medio);border:1px solid var(--cinza-borda);padding:16px 20px;align-items:center;transition:border-color 0.2s;"
+                 onmouseover="this.style.borderColor='rgba(249,115,22,0.35)'" onmouseout="this.style.borderColor='var(--cinza-borda)'">
+              <div>
+                <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:2px;">${i + 1}. ${c.name}</div>
+              </div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.4;">${c.tipo}</div>
+              <div style="font-size:12px;font-weight:700;color:${digitalColor(c.digital)};">${c.digital}</div>
+              <div style="font-size:12px;font-weight:700;color:${ameacaColor(c.ameaca)};">${c.ameaca}</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.5;">${c.fraqueza}</div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    } else {
+      compEl.innerHTML = '';
+    }
+
+    // Prioridades de ação
+    const priEl = document.getElementById('prioritiesSection');
+    if (diag.priorities && diag.priorities.length) {
+      priEl.innerHTML = `
+        <span class="label">Plano de Ação</span>
+        <h2 class="h2" style="margin-bottom:32px;">Prioridades Imediatas</h2>
+        <div style="display:flex;flex-direction:column;gap:2px;">
+          ${diag.priorities.map(p => `
+            <div style="background:var(--cinza-medio);border:1px solid var(--cinza-borda);display:grid;grid-template-columns:64px 1fr 1fr auto;align-items:center;gap:0;">
+              <div style="background:var(--laranja);color:#000;font-size:22px;font-weight:700;display:flex;align-items:center;justify-content:center;height:72px;flex-shrink:0;">${p.order}</div>
+              <div style="padding:20px 28px;">
+                <div style="font-size:15px;font-weight:700;margin-bottom:4px;">${p.action}</div>
+              </div>
+              <div style="padding:20px 28px;border-left:1px solid var(--cinza-borda);">
+                <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:4px;">Impacto esperado</div>
+                <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.5;">${p.impact}</div>
+              </div>
+              <div style="padding:20px 28px;border-left:1px solid var(--cinza-borda);white-space:nowrap;">
+                <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:4px;">Prazo</div>
+                <div style="font-size:13px;font-weight:700;color:var(--laranja);">${p.timeframe}</div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    } else {
+      priEl.innerHTML = '';
+    }
+
+    // Plano recomendado
+    document.getElementById('planName').textContent  = diag.plan.name;
+    document.getElementById('planReason').textContent= diag.plan.reason;
+    document.getElementById('planPrice').textContent = diag.plan.price;
+
+    // Comparação de todos os pacotes
+    const pkgEl = document.getElementById('packagesSection');
+    pkgEl.innerHTML = `
+      <span class="label">Investimento</span>
+      <h2 class="h2" style="margin-bottom:32px;">Todos os Pacotes Disponíveis</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
+        ${PACKAGES_DATA.map(pkg => {
+          const isRec = pkg.name === diag.plan.name;
+          return `
+          <div style="background:var(--cinza-medio);border:1px solid ${isRec ? 'var(--laranja)' : 'var(--cinza-borda)'};display:flex;flex-direction:column;">
+            ${isRec ? `<div style="background:var(--laranja);color:#000;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;text-align:center;padding:7px 0;">Recomendado</div>` : ''}
+            <div style="padding:28px 28px 20px;border-bottom:1px solid var(--cinza-borda);">
+              <div style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--laranja);margin-bottom:12px;">${pkg.name}</div>
+              <div style="font-size:36px;font-weight:700;letter-spacing:-0.04em;color:var(--branco);line-height:1;">${pkg.price}</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:6px;">${pkg.periodo}</div>
+            </div>
+            <div style="padding:20px 28px 28px;flex:1;">
+              <ul style="list-style:none;">
+                ${pkg.items.map(item => `
+                  <li style="display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:13px;color:rgba(255,255,255,0.6);">
+                    <span style="color:var(--laranja);font-size:11px;margin-top:2px;flex-shrink:0;">—</span>${item}
+                  </li>
+                `).join('')}
+              </ul>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+      <div style="margin-top:2px;padding:20px 28px;background:var(--cinza-medio);border:1px solid var(--cinza-borda);font-size:13px;color:rgba(255,255,255,0.4);">
+        <strong style="color:rgba(255,255,255,0.7);">Verba de mídia não inclusa.</strong> O investimento em anúncios (Meta Ads, Google Ads) é separado e acordado conforme os objetivos do cliente. Todos os pacotes exigem contrato mínimo de 6 meses.
+      </div>
+    `;
+
+    // Serviços avulsos
+    const avulEl = document.getElementById('avulsosSection');
+    avulEl.innerHTML = `
+      <span class="label">Sem contrato fixo</span>
+      <h2 class="h2" style="margin-bottom:32px;">Serviços Avulsos</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
+        ${AVULSOS_DATA.map(a => `
+          <div style="background:var(--cinza-medio);border:1px solid var(--cinza-borda);padding:28px 24px;">
+            <div style="font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:16px;">${a.name}</div>
+            <div style="font-size:28px;font-weight:700;letter-spacing:-0.03em;color:var(--laranja);">${a.price}</div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  function toggleItem(li) {
+    const desc  = li.querySelector('.item-desc');
+    const arrow = li.querySelector('.toggle-arrow');
+    const open  = desc.style.display !== 'none';
+    desc.style.display    = open ? 'none' : 'block';
+    arrow.style.transform = open ? '' : 'rotate(180deg)';
+    arrow.style.color     = open ? 'rgba(255,255,255,0.2)' : 'var(--laranja)';
+  }
+
+  // ══════════════════════════════════════════════════════
+  //  JORNADA INTERATIVA
+  // ══════════════════════════════════════════════════════
+  function renderJourney() {
+    const tl = document.getElementById('timeline');
+    tl.innerHTML = JOURNEY.map((phase, i) => `
+      <div style="background:var(--cinza-medio);border:1px solid var(--cinza-borda);overflow:hidden;transition:border-color 0.2s;" id="phase-${i}">
+        <div onclick="togglePhase(${i})" style="display:grid;grid-template-columns:72px 1fr auto;align-items:center;cursor:pointer;">
+          <div style="background:${phase.color};color:#000;font-size:22px;font-weight:700;display:flex;align-items:center;justify-content:center;height:80px;">${phase.phase}</div>
+          <div style="padding:0 32px;">
+            <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:${phase.color};margin-bottom:4px;">${phase.period}</div>
+            <div style="font-size:18px;font-weight:700;">${phase.name}</div>
+          </div>
+          <div style="padding:0 32px;">
+            <span id="arrow-${i}" style="color:rgba(255,255,255,0.25);font-size:18px;transition:transform 0.3s;display:block;">▾</span>
+          </div>
+        </div>
+        <div id="body-${i}" style="display:none;border-top:1px solid var(--cinza-borda);padding:28px 28px 28px 104px;">
+          <p style="font-size:14px;color:rgba(255,255,255,0.45);margin-bottom:20px;line-height:1.6;">${phase.summary}</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:2px;">
+            ${phase.steps.map((s,si) => `
+              <li id="step-${i}-${si}" onclick="toggleStep(${i},${si})" style="display:flex;align-items:center;gap:14px;padding:12px 14px;cursor:pointer;${s.done?'opacity:0.5;':''}">
+                <span id="check-${i}-${si}" style="width:20px;height:20px;border:1.5px solid ${s.done?phase.color:'rgba(255,255,255,0.15)'};background:${s.done?phase.color:'transparent'};flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;color:#000;font-weight:700;transition:all 0.2s;">${s.done?'✓':''}</span>
+                <span style="font-size:14px;color:${s.done?'rgba(255,255,255,0.35)':'rgba(255,255,255,0.75)'};text-decoration:${s.done?'line-through':'none'};transition:all 0.2s;">${s.text}</span>
+              </li>
+            `).join('')}
+          </ul>
+          <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:12px;">
+            <div style="height:3px;flex:1;background:var(--cinza-borda);overflow:hidden;">
+              <div id="prog-${i}" style="height:100%;background:${phase.color};width:${calcProgress(phase)}%;transition:width 0.4s;"></div>
+            </div>
+            <span id="prog-label-${i}" style="font-size:11px;color:rgba(255,255,255,0.3);white-space:nowrap;">${calcProgress(phase)}% concluído</span>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function calcProgress(phase) {
+    return Math.round(phase.steps.filter(s=>s.done).length / phase.steps.length * 100);
+  }
+
+  function togglePhase(i) {
+    const body  = document.getElementById('body-'+i);
+    const arrow = document.getElementById('arrow-'+i);
+    const card  = document.getElementById('phase-'+i);
+    const open  = body.style.display !== 'none';
+    body.style.display     = open ? 'none' : 'block';
+    arrow.style.transform  = open ? '' : 'rotate(180deg)';
+    arrow.style.color      = open ? 'rgba(255,255,255,0.25)' : JOURNEY[i].color;
+    card.style.borderColor = open ? 'var(--cinza-borda)' : JOURNEY[i].color;
+  }
+
+  function toggleStep(phaseIdx, stepIdx) {
+    const step  = JOURNEY[phaseIdx].steps[stepIdx];
+    const color = JOURNEY[phaseIdx].color;
+    step.done   = !step.done;
+    const check = document.getElementById('check-'+phaseIdx+'-'+stepIdx);
+    const li    = document.getElementById('step-'+phaseIdx+'-'+stepIdx);
+    const span  = li.querySelector('span:last-child');
+    check.style.background   = step.done ? color : 'transparent';
+    check.style.borderColor  = step.done ? color : 'rgba(255,255,255,0.15)';
+    check.textContent        = step.done ? '✓' : '';
+    span.style.color         = step.done ? 'rgba(255,255,255,0.35)' : 'rgba(255,255,255,0.75)';
+    span.style.textDecoration= step.done ? 'line-through' : 'none';
+    li.style.opacity         = step.done ? '0.5' : '1';
+    const pct = calcProgress(JOURNEY[phaseIdx]);
+    document.getElementById('prog-'+phaseIdx).style.width = pct+'%';
+    document.getElementById('prog-label-'+phaseIdx).textContent = pct+'% concluído';
+  }
+
+  // ══════════════════════════════════════════════════════
+  //  EXPORTAR PDF — nova janela + print nativo do browser
+  // ══════════════════════════════════════════════════════
+  function exportPDF() {
+    if (!activeDiag) return;
+    const btn = document.querySelector('[onclick="exportPDF()"]');
+    btn.textContent = '⏳ Abrindo PDF...';
+    btn.disabled = true;
+
+    const win = window.open('', '_blank');
+    if (!win) {
+      alert('Permita pop-ups para este site e tente novamente.');
+      btn.textContent = '↓ Exportar PDF';
+      btn.disabled = false;
+      return;
+    }
+
+    win.document.write(buildPDFHtml(activeDiag));
+    win.document.close();
+
+    win.addEventListener('load', () => {
+      setTimeout(() => { win.focus(); win.print(); }, 600);
+    });
+
+    setTimeout(() => {
+      btn.textContent = '↓ Exportar PDF';
+      btn.disabled = false;
+    }, 2000);
+  }
+
+  function buildPDFHtml(d) {
+    const or = '#f97316', wh = '#ffffff', bg = '#0d0d0d', card = '#141414', bdr = '#2a2a2a';
+    const g4 = 'rgba(255,255,255,0.4)', g6 = 'rgba(255,255,255,0.6)', g3 = 'rgba(255,255,255,0.3)';
+    const printCss = `
+      <meta charset="UTF-8">
+      <style>
+        @page { size: A4; margin: 12mm; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: ${bg}; color: ${wh}; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        @media print {
+          body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+          .no-break { page-break-inside: avoid; }
+        }
+        @media screen {
+          body { padding: 20px; max-width: 860px; margin: 0 auto; }
+        }
+      </style>`;
+
+    const row = (label, val, color) => `
+      <div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid ${bdr};">
+        <span style="color:${color};font-size:11px;font-weight:700;width:16px;flex-shrink:0;">—</span>
+        <div style="flex:1;">
+          <span style="font-size:13px;color:${wh};font-weight:600;">${label}</span>
+        </div>
+        <span style="font-size:13px;color:${color};font-weight:700;">${val}</span>
+      </div>`;
+
+    const maturidadeColor = d.macro ? (d.macro.maturidade === 'Iniciante' ? '#ef4444' : d.macro.maturidade === 'Em desenvolvimento' ? or : '#22c55e') : or;
+    const potencialColor  = d.macro ? (d.macro.potencial  === 'Alto'       ? '#22c55e' : d.macro.potencial  === 'Médio' ? or : '#6b7280') : or;
+    const urgenciaColor   = d.macro ? (d.macro.urgencia   === 'Alta'       ? '#ef4444' : d.macro.urgencia   === 'Média' ? or : '#22c55e') : or;
+
+    const macroHtml = d.macro ? `
+      <div style="page-break-inside:avoid;margin-bottom:24px;">
+        <div style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:${or};margin-bottom:8px;">Visão Macro</div>
+        <div style="font-size:18px;font-weight:700;color:${wh};margin-bottom:16px;">Contexto de Mercado</div>
+        <div style="display:flex;gap:8px;margin-bottom:8px;">
+          <div style="flex:1;background:${card};border:1px solid ${bdr};padding:16px;">
+            <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:${g3};margin-bottom:6px;">Maturidade Digital</div>
+            <div style="font-size:18px;font-weight:700;color:${maturidadeColor};">${d.macro.maturidade}</div>
+          </div>
+          <div style="flex:1;background:${card};border:1px solid ${bdr};padding:16px;">
+            <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:${g3};margin-bottom:6px;">Potencial</div>
+            <div style="font-size:18px;font-weight:700;color:${potencialColor};">${d.macro.potencial}</div>
+          </div>
+          <div style="flex:1;background:${card};border:1px solid ${bdr};padding:16px;">
+            <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:${g3};margin-bottom:6px;">Urgência de Ação</div>
+            <div style="font-size:18px;font-weight:700;color:${urgenciaColor};">${d.macro.urgencia}</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <div style="flex:1;background:${card};border:1px solid ${bdr};padding:16px;">
+            <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:${g3};margin-bottom:6px;">Cenário do Setor</div>
+            <div style="font-size:12px;color:${g6};line-height:1.6;">${d.macro.setor}</div>
+          </div>
+          <div style="flex:1;background:${card};border:1px solid ${bdr};padding:16px;">
+            <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:${or};margin-bottom:6px;">Principal Oportunidade</div>
+            <div style="font-size:12px;color:${wh};line-height:1.6;font-weight:500;">${d.macro.oportunidade}</div>
+          </div>
+          <div style="flex:1;background:${card};border:1px solid ${bdr};padding:16px;">
+            <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:${g3};margin-bottom:6px;">Concorrência Digital</div>
+            <div style="font-size:12px;color:${g6};line-height:1.6;">${d.macro.concorrencia}</div>
+          </div>
+        </div>
+      </div>` : '';
+
+    const criticalHtml = `
+      <div style="page-break-inside:avoid;flex:1;background:${card};border:1px solid ${bdr};padding:24px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+          <div style="width:7px;height:7px;background:#ef4444;border-radius:50%;"></div>
+          <span style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#ef4444;">Pontos Críticos</span>
+        </div>
+        ${d.critical.map(p => `
+          <div style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+            <div style="display:flex;gap:8px;margin-bottom:4px;">
+              <span style="color:#ef4444;font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px;">✕</span>
+              <span style="font-size:13px;font-weight:600;color:${wh};line-height:1.4;">${p.title}</span>
+            </div>
+            <div style="font-size:11px;color:${g4};line-height:1.6;padding-left:18px;">${p.desc}</div>
+          </div>`).join('')}
+      </div>`;
+
+    const positiveHtml = `
+      <div style="page-break-inside:avoid;flex:1;background:${card};border:1px solid ${bdr};padding:24px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+          <div style="width:7px;height:7px;background:#22c55e;border-radius:50%;"></div>
+          <span style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#22c55e;">Pontos Positivos</span>
+        </div>
+        ${d.positive.map(p => `
+          <div style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+            <div style="display:flex;gap:8px;margin-bottom:4px;">
+              <span style="color:#22c55e;font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px;">✓</span>
+              <span style="font-size:13px;font-weight:600;color:${wh};line-height:1.4;">${p.title}</span>
+            </div>
+            <div style="font-size:11px;color:${g4};line-height:1.6;padding-left:18px;">${p.desc}</div>
+          </div>`).join('')}
+      </div>`;
+
+    const competitorsHtml = d.competitors && d.competitors.length ? `
+      <div class="no-break" style="margin-bottom:24px;">
+        <div style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:${or};margin-bottom:8px;">Análise Competitiva</div>
+        <div style="font-size:18px;font-weight:700;color:${wh};margin-bottom:16px;">5 Maiores Concorrentes na Região</div>
+        <div style="border:1px solid ${bdr};overflow:hidden;">
+          <div style="display:flex;background:#111;padding:10px 16px;gap:8px;">
+            <span style="flex:2;font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:${g3};">Concorrente</span>
+            <span style="flex:1.5;font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:${g3};">Tipo</span>
+            <span style="flex:0.8;font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:${g3};">Digital</span>
+            <span style="flex:0.7;font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:${g3};">Ameaça</span>
+            <span style="flex:2.5;font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:${g3};">Fraqueza / Oportunidade</span>
+          </div>
+          ${d.competitors.map((c, i) => {
+            const dc = c.digital==='Forte'?'#22c55e':c.digital==='Regular'?or:c.digital==='Fraca'?'#ef4444':'#6b7280';
+            const ac = c.ameaca==='Alta'?'#ef4444':c.ameaca==='Média'?or:'#22c55e';
+            return `<div style="display:flex;padding:12px 16px;gap:8px;border-top:1px solid ${bdr};background:${card};align-items:flex-start;">
+              <div style="flex:2;font-size:12px;font-weight:700;color:${wh};">${i+1}. ${c.name}</div>
+              <div style="flex:1.5;font-size:11px;color:${g4};line-height:1.4;">${c.tipo}</div>
+              <div style="flex:0.8;font-size:11px;font-weight:700;color:${dc};">${c.digital}</div>
+              <div style="flex:0.7;font-size:11px;font-weight:700;color:${ac};">${c.ameaca}</div>
+              <div style="flex:2.5;font-size:11px;color:${g4};line-height:1.5;">${c.fraqueza}</div>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>` : '';
+
+    const prioritiesHtml = d.priorities && d.priorities.length ? `
+      <div style="page-break-inside:avoid;margin-bottom:24px;">
+        <div style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:${or};margin-bottom:8px;">Plano de Ação</div>
+        <div style="font-size:18px;font-weight:700;color:${wh};margin-bottom:16px;">Prioridades Imediatas</div>
+        ${d.priorities.map(p => `
+          <div style="display:flex;align-items:stretch;background:${card};border:1px solid ${bdr};margin-bottom:2px;">
+            <div style="background:${or};color:#000;font-size:18px;font-weight:700;width:52px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">${p.order}</div>
+            <div style="padding:12px 16px;flex:2;border-right:1px solid ${bdr};">
+              <div style="font-size:13px;font-weight:600;color:${wh};">${p.action}</div>
+            </div>
+            <div style="padding:12px 16px;flex:2;border-right:1px solid ${bdr};">
+              <div style="font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:${g3};margin-bottom:3px;">Impacto</div>
+              <div style="font-size:12px;color:${g6};line-height:1.5;">${p.impact}</div>
+            </div>
+            <div style="padding:12px 16px;flex:0 0 100px;">
+              <div style="font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:${g3};margin-bottom:3px;">Prazo</div>
+              <div style="font-size:12px;font-weight:700;color:${or};">${p.timeframe}</div>
+            </div>
+          </div>`).join('')}
+      </div>` : '';
+
+    const planHtml = `
+      <div style="page-break-inside:avoid;background:${card};border:2px solid ${or};padding:28px;margin-bottom:24px;display:flex;gap:32px;align-items:center;">
+        <div style="flex:1;">
+          <div style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:${or};margin-bottom:10px;">Recomendação Flare</div>
+          <div style="font-size:24px;font-weight:700;color:${wh};margin-bottom:10px;">${d.plan.name}</div>
+          <div style="font-size:13px;color:${g6};line-height:1.7;">${d.plan.reason}</div>
+        </div>
+        <div style="text-align:center;flex-shrink:0;">
+          <div style="font-size:36px;font-weight:700;color:${or};letter-spacing:-0.04em;line-height:1;">${d.plan.price}</div>
+          <div style="font-size:11px;color:${g3};margin-top:4px;">por mês · mín. 6 meses</div>
+        </div>
+      </div>`;
+
+    const packagesHtml = `
+      <div style="page-break-inside:avoid;margin-bottom:24px;">
+        <div style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:${or};margin-bottom:8px;">Investimento</div>
+        <div style="font-size:18px;font-weight:700;color:${wh};margin-bottom:16px;">Todos os Pacotes</div>
+        <div style="display:flex;gap:2px;">
+          ${PACKAGES_DATA.map(pkg => {
+            const isRec = pkg.name === d.plan.name;
+            return `
+            <div style="flex:1;background:${card};border:1px solid ${isRec ? or : bdr};display:flex;flex-direction:column;">
+              ${isRec ? `<div style="background:${or};color:#000;font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;text-align:center;padding:5px 0;">Recomendado</div>` : ''}
+              <div style="padding:20px 18px 14px;border-bottom:1px solid ${bdr};">
+                <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:${or};margin-bottom:8px;">${pkg.name}</div>
+                <div style="font-size:26px;font-weight:700;color:${wh};letter-spacing:-0.04em;line-height:1;">${pkg.price}</div>
+                <div style="font-size:10px;color:${g3};margin-top:4px;">/mês · mín. 6 meses</div>
+              </div>
+              <div style="padding:14px 18px 18px;">
+                ${pkg.items.map(item => `
+                  <div style="display:flex;gap:8px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:11px;color:${g6};">
+                    <span style="color:${or};flex-shrink:0;">—</span>${item}
+                  </div>`).join('')}
+              </div>
+            </div>`;
+          }).join('')}
+        </div>
+        <div style="margin-top:2px;padding:14px 18px;background:${card};border:1px solid ${bdr};font-size:11px;color:${g4};">
+          <strong style="color:${g6};">Verba de mídia não inclusa.</strong> O investimento em anúncios (Meta/Google Ads) é acordado separadamente. Contrato mínimo 6 meses.
+        </div>
+      </div>`;
+
+    const avulsosHtml = `
+      <div style="page-break-inside:avoid;margin-bottom:24px;">
+        <div style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:${or};margin-bottom:8px;">Sem contrato fixo</div>
+        <div style="font-size:18px;font-weight:700;color:${wh};margin-bottom:16px;">Serviços Avulsos</div>
+        <div style="display:flex;gap:2px;flex-wrap:wrap;">
+          ${AVULSOS_DATA.map(a => `
+            <div style="background:${card};border:1px solid ${bdr};padding:18px 16px;flex:1;min-width:120px;">
+              <div style="font-size:11px;color:${g4};margin-bottom:10px;">${a.name}</div>
+              <div style="font-size:20px;font-weight:700;color:${or};letter-spacing:-0.03em;">${a.price}</div>
+            </div>`).join('')}
+        </div>
+      </div>`;
+
+    return `<!DOCTYPE html><html lang="pt-BR"><head>${printCss}</head><body>
+      <div style="background:${bg};color:${wh};font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;line-height:1.6;padding:0;-webkit-font-smoothing:antialiased;">
+
+        <!-- Capa -->
+        <div style="background:#000;border-bottom:3px solid ${or};padding:36px 32px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;">
+          <div>
+            <div style="font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:${or};margin-bottom:8px;">Diagnóstico Flare Productions</div>
+            <div style="font-size:28px;font-weight:700;color:${wh};letter-spacing:-0.02em;margin-bottom:6px;">${d.clientName}</div>
+            <div style="font-size:12px;color:${g3};">${d.date}</div>
+            ${d.segmento ? `<div style="font-size:11px;color:${g4};margin-top:4px;">${d.segmento}</div>` : ''}
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:22px;font-weight:700;letter-spacing:0.08em;color:${wh};"><span style="color:${or};">FLARE</span> PRODUCTIONS</div>
+            <div style="font-size:10px;color:${g3};letter-spacing:0.1em;margin-top:4px;">Impacto Criativo · Franca-SP</div>
+          </div>
+        </div>
+
+        <div style="padding:0 12px;">
+
+        <!-- Scores -->
+        <div style="display:flex;gap:2px;margin-bottom:24px;">
+          ${d.scores.map(s => `
+            <div style="flex:1;background:${card};border:1px solid ${bdr};padding:20px 16px;">
+              <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:${g3};margin-bottom:10px;">${s.label}</div>
+              <div style="font-size:32px;font-weight:700;color:${s.color};line-height:1;margin-bottom:5px;">${s.value}</div>
+              <div style="font-size:10px;color:${s.color};letter-spacing:0.1em;text-transform:uppercase;">${s.note}</div>
+            </div>`).join('')}
+        </div>
+
+        ${macroHtml}
+        ${competitorsHtml}
+
+        <!-- Críticos e Positivos -->
+        <div style="display:flex;gap:2px;margin-bottom:24px;">
+          ${criticalHtml}
+          ${positiveHtml}
+        </div>
+
+        ${prioritiesHtml}
+        ${planHtml}
+        ${packagesHtml}
+        ${avulsosHtml}
+
+        <!-- Rodapé -->
+        <div style="border-top:1px solid ${bdr};padding-top:16px;display:flex;justify-content:space-between;align-items:center;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;color:rgba(255,255,255,0.4);"><span style="color:${or};">FLARE</span> PRODUCTIONS</div>
+          <div style="font-size:11px;color:${g3};">flareproductions@outlook.com · +55 16 98809-5920</div>
+          <div style="font-size:11px;color:${g3};">Franca — São Paulo — BR</div>
+        </div>
+
+        </div>
+      </div>
+    </body></html>`;
+  }
+  </script>
+
+  <!-- FOOTER -->
+  <footer>
+    <img
+      src="https://flareproductions.com.br/Imgs/Flare-Productions_logo.png"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"
+      alt="Flare Productions">
+    <span style="display:none; font-size:14px; font-weight:700; letter-spacing:0.15em; color:rgba(255,255,255,0.4);">
+      <span style="color:#f97316;">FLARE</span> PRODUCTIONS
+    </span>
+    <span class="footer-mid">Franca — São Paulo — BR</span>
+    <span class="footer-right">Impacto Criativo</span>
+  </footer>
+
+</body>
+</html>
