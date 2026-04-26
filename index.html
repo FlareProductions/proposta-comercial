@@ -2798,7 +2798,7 @@ Seja específico, direto e profissional. Foque em impacto real no negócio. Toda
       return;
     }
     const btn = document.getElementById('btnExportProposta');
-    btn.textContent = '⏳ Abrindo PDF...';
+    btn.textContent = '⏳ Gerando PDF...';
     btn.disabled = true;
 
     const data = {
@@ -2817,37 +2817,34 @@ Seja específico, direto e profissional. Foque em impacto real no negócio. Toda
       date:        new Date().toLocaleDateString('pt-BR', { day:'2-digit', month:'long', year:'numeric' }),
     };
 
-    const win = window.open('', '_blank');
-    if (!win) {
-      alert('Permita pop-ups para este site e tente novamente.');
+    const container = document.createElement('div');
+    container.style.cssText = 'position:absolute;left:-9999px;top:0;width:794px;background:#0d0d0d;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;';
+    container.innerHTML = buildPropostaPDFContent(data);
+    document.body.appendChild(container);
+
+    const filename = 'proposta-' + empresa.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-') + '.pdf';
+
+    html2pdf().set({
+      margin: 10,
+      filename,
+      image: { type: 'jpeg', quality: 0.97 },
+      html2canvas: { scale: 2, backgroundColor: '#0d0d0d', useCORS: true, logging: false },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+    }).from(container).save().then(() => {
+      document.body.removeChild(container);
       btn.textContent = '↓ Exportar Proposta PDF';
       btn.disabled = false;
-      return;
-    }
-
-    win.document.write(buildPropostaPDFHtml(data));
-    win.document.close();
-    win.addEventListener('load', () => { setTimeout(() => { win.focus(); win.print(); }, 600); });
-
-    setTimeout(() => {
+    }).catch(() => {
+      document.body.removeChild(container);
       btn.textContent = '↓ Exportar Proposta PDF';
       btn.disabled = false;
-    }, 2000);
+    });
   }
 
-  function buildPropostaPDFHtml(data) {
+  function buildPropostaPDFContent(data) {
     const or = '#f97316', wh = '#ffffff', bg = '#0d0d0d', card = '#141414', bdr = '#2a2a2a';
     const g4 = 'rgba(255,255,255,0.4)', g6 = 'rgba(255,255,255,0.6)', g3 = 'rgba(255,255,255,0.3)';
-
-    const css = `
-      <meta charset="UTF-8">
-      <style>
-        @page { size: A4; margin: 12mm; }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background: ${bg}; color: ${wh}; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-        @media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .no-break { page-break-inside: avoid; } }
-        @media screen { body { padding: 20px; max-width: 860px; margin: 0 auto; } }
-      </style>`;
 
     const entregasList = data.entregas
       ? data.entregas.split('\n').filter(l => l.trim()).map(l => `
@@ -2895,8 +2892,8 @@ Seja específico, direto e profissional. Foque em impacto real no negócio. Toda
         </div>
       </div>`;
 
-    return `<!DOCTYPE html><html lang="pt-BR"><head>${css}</head><body>
-      <div style="background:${bg};color:${wh};font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;line-height:1.6;padding:0;">
+    return `
+      <div style="background:${bg};color:${wh};font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;line-height:1.6;padding:0;font-size:14px;">
 
         <!-- Capa -->
         <div style="background:#000;border-bottom:3px solid ${or};padding:36px 32px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;">
@@ -2976,8 +2973,21 @@ Seja específico, direto e profissional. Foque em impacto real no negócio. Toda
         </div>
 
         </div>
-      </div>
-    </body></html>`;
+      </div>`;
+  }
+
+  function buildPropostaPDFHtml(data) {
+    const bg = '#0d0d0d', wh = '#ffffff';
+    const css = `
+      <meta charset="UTF-8">
+      <style>
+        @page { size: A4; margin: 12mm; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: ${bg}; color: ${wh}; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        @media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .no-break { page-break-inside: avoid; } }
+        @media screen { body { padding: 20px; max-width: 860px; margin: 0 auto; } }
+      </style>`;
+    return `<!DOCTYPE html><html lang="pt-BR"><head>${css}</head><body>${buildPropostaPDFContent(data)}</body></html>`;
   }
   </script>
 
