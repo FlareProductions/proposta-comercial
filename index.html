@@ -1318,7 +1318,8 @@
           <div style="display:flex;gap:0;">
             <button class="tab-btn active" onclick="switchTab('pesquisa')" id="tab-pesquisa" style="background:none;border:none;border-bottom:2px solid var(--laranja);color:var(--branco);font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0 0 16px;margin-right:32px;cursor:pointer;transition:all 0.2s;">Novo Diagnóstico</button>
             <button class="tab-btn" onclick="switchTab('historico')" id="tab-historico" style="background:none;border:none;border-bottom:2px solid transparent;color:rgba(255,255,255,0.35);font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0 0 16px;margin-right:32px;cursor:pointer;transition:all 0.2s;">Histórico</button>
-            <button class="tab-btn" onclick="switchTab('atual')" id="tab-atual" style="background:none;border:none;border-bottom:2px solid transparent;color:rgba(255,255,255,0.35);font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0 0 16px;cursor:pointer;transition:all 0.2s;" id="tab-atual">Ver Diagnóstico</button>
+            <button class="tab-btn" onclick="switchTab('atual')" id="tab-atual" style="background:none;border:none;border-bottom:2px solid transparent;color:rgba(255,255,255,0.35);font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0 0 16px;margin-right:32px;cursor:pointer;transition:all 0.2s;">Ver Diagnóstico</button>
+            <button class="tab-btn" onclick="switchTab('proposta')" id="tab-proposta" style="background:none;border:none;border-bottom:2px solid transparent;color:rgba(255,255,255,0.35);font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0 0 16px;cursor:pointer;transition:all 0.2s;">Proposta Personalizada</button>
           </div>
           <button onclick="diagLogout()" style="background:none;border:1px solid var(--cinza-borda);color:rgba(255,255,255,0.4);font-family:inherit;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 20px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--laranja)';this.style.color='var(--laranja)'" onmouseout="this.style.borderColor='var(--cinza-borda)';this.style.color='rgba(255,255,255,0.4)'">Sair</button>
         </div>
@@ -1502,6 +1503,119 @@
           <div id="timeline" style="display:flex;flex-direction:column;gap:2px;"></div>
 
         </div><!-- /panel-atual -->
+
+        <!-- ══════════════════════════════════
+             TAB: PROPOSTA PERSONALIZADA
+             ══════════════════════════════════ -->
+        <div id="panel-proposta" style="display:none;">
+
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:48px;flex-wrap:wrap;gap:16px;">
+            <div>
+              <span class="label">Proposta Personalizada</span>
+              <h2 class="h1" style="margin-bottom:8px;">Montar proposta para cliente</h2>
+              <p style="font-size:14px;color:rgba(255,255,255,0.35);">Preencha os campos abaixo e exporte em PDF com os pacotes e serviços da Flare.</p>
+            </div>
+            <button onclick="exportPropostaPDF()" id="btnExportProposta" class="btn btn-primary" style="border:none;cursor:pointer;font-family:inherit;">↓ Exportar Proposta PDF</button>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:2px;">
+
+            <!-- Coluna esquerda: dados do cliente -->
+            <div style="background:var(--cinza-medio);border:1px solid var(--cinza-borda);padding:36px;">
+              <div style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--laranja);margin-bottom:24px;">Dados do cliente</div>
+              <div style="display:flex;flex-direction:column;gap:18px;">
+                <div>
+                  <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:8px;">Nome da empresa *</label>
+                  <input id="p-empresa" type="text" placeholder="Ex: Santamelia Agropecuária"
+                    style="width:100%;background:var(--cinza-claro);border:1px solid var(--cinza-borda);color:var(--branco);font-family:inherit;font-size:15px;padding:12px 14px;outline:none;transition:border-color 0.2s;"
+                    onfocus="this.style.borderColor='var(--laranja)'" onblur="this.style.borderColor='var(--cinza-borda)'">
+                </div>
+                <div>
+                  <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:8px;">Responsável / Contato</label>
+                  <input id="p-responsavel" type="text" placeholder="Ex: João Silva"
+                    style="width:100%;background:var(--cinza-claro);border:1px solid var(--cinza-borda);color:var(--branco);font-family:inherit;font-size:15px;padding:12px 14px;outline:none;transition:border-color 0.2s;"
+                    onfocus="this.style.borderColor='var(--laranja)'" onblur="this.style.borderColor='var(--cinza-borda)'">
+                </div>
+                <div>
+                  <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:8px;">E-mail</label>
+                  <input id="p-email" type="email" placeholder="contato@empresa.com.br"
+                    style="width:100%;background:var(--cinza-claro);border:1px solid var(--cinza-borda);color:var(--branco);font-family:inherit;font-size:15px;padding:12px 14px;outline:none;transition:border-color 0.2s;"
+                    onfocus="this.style.borderColor='var(--laranja)'" onblur="this.style.borderColor='var(--cinza-borda)'">
+                </div>
+                <div>
+                  <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:8px;">Telefone / WhatsApp</label>
+                  <input id="p-telefone" type="text" placeholder="(16) 9 9999-9999"
+                    style="width:100%;background:var(--cinza-claro);border:1px solid var(--cinza-borda);color:var(--branco);font-family:inherit;font-size:15px;padding:12px 14px;outline:none;transition:border-color 0.2s;"
+                    onfocus="this.style.borderColor='var(--laranja)'" onblur="this.style.borderColor='var(--cinza-borda)'">
+                </div>
+                <div>
+                  <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:8px;">Segmento</label>
+                  <input id="p-segmento" type="text" placeholder="Ex: Agropecuária, Gastronomia..."
+                    style="width:100%;background:var(--cinza-claro);border:1px solid var(--cinza-borda);color:var(--branco);font-family:inherit;font-size:15px;padding:12px 14px;outline:none;transition:border-color 0.2s;"
+                    onfocus="this.style.borderColor='var(--laranja)'" onblur="this.style.borderColor='var(--cinza-borda)'">
+                </div>
+                <div>
+                  <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:8px;">Validade da proposta</label>
+                  <input id="p-validade" type="text" placeholder="Ex: 15 dias" value="15 dias"
+                    style="width:100%;background:var(--cinza-claro);border:1px solid var(--cinza-borda);color:var(--branco);font-family:inherit;font-size:15px;padding:12px 14px;outline:none;transition:border-color 0.2s;"
+                    onfocus="this.style.borderColor='var(--laranja)'" onblur="this.style.borderColor='var(--cinza-borda)'">
+                </div>
+              </div>
+            </div>
+
+            <!-- Coluna direita: proposta -->
+            <div style="background:var(--cinza-medio);border:1px solid var(--cinza-borda);padding:36px;">
+              <div style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--laranja);margin-bottom:24px;">Detalhes da proposta</div>
+              <div style="display:flex;flex-direction:column;gap:18px;">
+                <div>
+                  <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:8px;">Título / Pacote</label>
+                  <input id="p-titulo" type="text" placeholder="Ex: FRAME Gold Personalizado"
+                    style="width:100%;background:var(--cinza-claro);border:1px solid var(--cinza-borda);color:var(--branco);font-family:inherit;font-size:15px;padding:12px 14px;outline:none;transition:border-color 0.2s;"
+                    onfocus="this.style.borderColor='var(--laranja)'" onblur="this.style.borderColor='var(--cinza-borda)'">
+                </div>
+                <div>
+                  <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:8px;">O que será entregue (uma entrega por linha)</label>
+                  <textarea id="p-entregas" rows="7" placeholder="4 vídeos profissionais por mês&#10;Gestão de Meta Ads&#10;Consultoria estratégica mensal&#10;Roteiro + filmagem + edição&#10;Relatório mensal de performance"
+                    style="width:100%;background:var(--cinza-claro);border:1px solid var(--cinza-borda);color:var(--branco);font-family:inherit;font-size:14px;padding:12px 14px;outline:none;resize:vertical;line-height:1.7;transition:border-color 0.2s;"
+                    onfocus="this.style.borderColor='var(--laranja)'" onblur="this.style.borderColor='var(--cinza-borda)'"></textarea>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                  <div>
+                    <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:8px;">Investimento *</label>
+                    <input id="p-valor" type="text" placeholder="R$ 3.500/mês"
+                      style="width:100%;background:var(--cinza-claro);border:1px solid var(--cinza-borda);color:var(--branco);font-family:inherit;font-size:15px;padding:12px 14px;outline:none;transition:border-color 0.2s;"
+                      onfocus="this.style.borderColor='var(--laranja)'" onblur="this.style.borderColor='var(--cinza-borda)'">
+                  </div>
+                  <div>
+                    <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:8px;">Contrato mínimo</label>
+                    <input id="p-contrato" type="text" placeholder="6 meses" value="6 meses"
+                      style="width:100%;background:var(--cinza-claro);border:1px solid var(--cinza-borda);color:var(--branco);font-family:inherit;font-size:15px;padding:12px 14px;outline:none;transition:border-color 0.2s;"
+                      onfocus="this.style.borderColor='var(--laranja)'" onblur="this.style.borderColor='var(--cinza-borda)'">
+                  </div>
+                </div>
+                <div>
+                  <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:8px;">Forma de pagamento</label>
+                  <input id="p-pagamento" type="text" placeholder="Ex: Boleto mensal até dia 5 ou PIX antecipado"
+                    style="width:100%;background:var(--cinza-claro);border:1px solid var(--cinza-borda);color:var(--branco);font-family:inherit;font-size:15px;padding:12px 14px;outline:none;transition:border-color 0.2s;"
+                    onfocus="this.style.borderColor='var(--laranja)'" onblur="this.style.borderColor='var(--cinza-borda)'">
+                </div>
+                <div>
+                  <label style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:8px;">Observações / condições especiais</label>
+                  <textarea id="p-obs" rows="3" placeholder="Ex: Verba de mídia não inclusa. Início em até 7 dias após assinatura."
+                    style="width:100%;background:var(--cinza-claro);border:1px solid var(--cinza-borda);color:var(--branco);font-family:inherit;font-size:14px;padding:12px 14px;outline:none;resize:vertical;line-height:1.7;transition:border-color 0.2s;"
+                    onfocus="this.style.borderColor='var(--laranja)'" onblur="this.style.borderColor='var(--cinza-borda)'"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preview dos pacotes padrão -->
+          <div style="margin-top:2px;background:var(--cinza-medio);border:1px solid var(--cinza-borda);padding:28px 32px;">
+            <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:4px;">Incluído no PDF</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.5);">Tabela comparativa dos pacotes FRAME + serviços avulsos serão adicionados automaticamente ao final da proposta.</div>
+          </div>
+
+        </div><!-- /panel-proposta -->
 
       </div><!-- /diagContent -->
     </div>
@@ -1814,7 +1928,7 @@
   //  TABS
   // ══════════════════════════════════════════════════════
   function switchTab(tab) {
-    ['pesquisa','historico','atual'].forEach(t => {
+    ['pesquisa','historico','atual','proposta'].forEach(t => {
       document.getElementById('panel-' + t).style.display = t === tab ? 'block' : 'none';
       const btn = document.getElementById('tab-' + t);
       if (btn) {
@@ -1824,6 +1938,15 @@
     });
     if (tab === 'historico') renderHistory();
     if (tab === 'atual' && activeDiag) renderDiag(activeDiag);
+    if (tab === 'proposta' && activeDiag) prefillProposta(activeDiag);
+  }
+
+  function prefillProposta(diag) {
+    if (!diag) return;
+    const empresa = document.getElementById('p-empresa');
+    const segmento = document.getElementById('p-segmento');
+    if (empresa && !empresa.value) empresa.value = diag.clientName || '';
+    if (segmento && !segmento.value) segmento.value = diag.segmento || '';
   }
 
   // ══════════════════════════════════════════════════════
@@ -2657,6 +2780,197 @@ Seja específico, direto e profissional. Foque em impacto real no negócio. Toda
         <!-- Rodapé -->
         <div style="border-top:1px solid ${bdr};padding-top:16px;display:flex;justify-content:space-between;align-items:center;">
           <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;color:rgba(255,255,255,0.4);"><span style="color:${or};">FLARE</span> PRODUCTIONS</div>
+          <div style="font-size:11px;color:${g3};">flareproductions@outlook.com · +55 16 98809-5920</div>
+          <div style="font-size:11px;color:${g3};">Franca — São Paulo — BR</div>
+        </div>
+
+        </div>
+      </div>
+    </body></html>`;
+  }
+  // ══════════════════════════════════════════════════════
+  //  PROPOSTA PERSONALIZADA — PDF
+  // ══════════════════════════════════════════════════════
+  function exportPropostaPDF() {
+    const empresa = document.getElementById('p-empresa').value.trim();
+    if (!empresa) {
+      alert('Preencha ao menos o nome da empresa.');
+      return;
+    }
+    const btn = document.getElementById('btnExportProposta');
+    btn.textContent = '⏳ Abrindo PDF...';
+    btn.disabled = true;
+
+    const data = {
+      empresa,
+      responsavel: document.getElementById('p-responsavel').value.trim(),
+      email:       document.getElementById('p-email').value.trim(),
+      telefone:    document.getElementById('p-telefone').value.trim(),
+      segmento:    document.getElementById('p-segmento').value.trim(),
+      validade:    document.getElementById('p-validade').value.trim() || '15 dias',
+      titulo:      document.getElementById('p-titulo').value.trim(),
+      entregas:    document.getElementById('p-entregas').value.trim(),
+      valor:       document.getElementById('p-valor').value.trim(),
+      contrato:    document.getElementById('p-contrato').value.trim() || '6 meses',
+      pagamento:   document.getElementById('p-pagamento').value.trim(),
+      obs:         document.getElementById('p-obs').value.trim(),
+      date:        new Date().toLocaleDateString('pt-BR', { day:'2-digit', month:'long', year:'numeric' }),
+    };
+
+    const win = window.open('', '_blank');
+    if (!win) {
+      alert('Permita pop-ups para este site e tente novamente.');
+      btn.textContent = '↓ Exportar Proposta PDF';
+      btn.disabled = false;
+      return;
+    }
+
+    win.document.write(buildPropostaPDFHtml(data));
+    win.document.close();
+    win.addEventListener('load', () => { setTimeout(() => { win.focus(); win.print(); }, 600); });
+
+    setTimeout(() => {
+      btn.textContent = '↓ Exportar Proposta PDF';
+      btn.disabled = false;
+    }, 2000);
+  }
+
+  function buildPropostaPDFHtml(data) {
+    const or = '#f97316', wh = '#ffffff', bg = '#0d0d0d', card = '#141414', bdr = '#2a2a2a';
+    const g4 = 'rgba(255,255,255,0.4)', g6 = 'rgba(255,255,255,0.6)', g3 = 'rgba(255,255,255,0.3)';
+
+    const css = `
+      <meta charset="UTF-8">
+      <style>
+        @page { size: A4; margin: 12mm; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: ${bg}; color: ${wh}; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        @media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .no-break { page-break-inside: avoid; } }
+        @media screen { body { padding: 20px; max-width: 860px; margin: 0 auto; } }
+      </style>`;
+
+    const entregasList = data.entregas
+      ? data.entregas.split('\n').filter(l => l.trim()).map(l => `
+          <div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid ${bdr};align-items:flex-start;">
+            <span style="color:${or};font-weight:700;flex-shrink:0;font-size:13px;">—</span>
+            <span style="font-size:13px;color:${wh};">${l.trim()}</span>
+          </div>`).join('')
+      : `<div style="font-size:13px;color:${g4};padding:12px 0;">Nenhuma entrega especificada.</div>`;
+
+    const packagesHtml = `
+      <div class="no-break" style="margin-bottom:24px;">
+        <div style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:${or};margin-bottom:8px;">Conheça Nossos Planos</div>
+        <div style="font-size:18px;font-weight:700;color:${wh};margin-bottom:16px;">Pacotes FRAME</div>
+        <div style="display:flex;gap:2px;">
+          ${PACKAGES_DATA.map(pkg => `
+            <div style="flex:1;background:${card};border:1px solid ${bdr};display:flex;flex-direction:column;">
+              <div style="padding:20px 18px 14px;border-bottom:1px solid ${bdr};">
+                <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:${or};margin-bottom:8px;">${pkg.name}</div>
+                <div style="font-size:26px;font-weight:700;color:${wh};letter-spacing:-0.04em;line-height:1;">${pkg.price}</div>
+                <div style="font-size:10px;color:${g3};margin-top:4px;">${pkg.periodo}</div>
+              </div>
+              <div style="padding:14px 18px 18px;">
+                ${pkg.items.map(item => `
+                  <div style="display:flex;gap:8px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:11px;color:${g6};">
+                    <span style="color:${or};flex-shrink:0;">—</span>${item}
+                  </div>`).join('')}
+              </div>
+            </div>`).join('')}
+        </div>
+        <div style="margin-top:2px;padding:14px 18px;background:${card};border:1px solid ${bdr};font-size:11px;color:${g4};">
+          <strong style="color:${g6};">Verba de mídia não inclusa.</strong> O investimento em anúncios (Meta/Google Ads) é acordado separadamente.
+        </div>
+      </div>`;
+
+    const avulsosHtml = `
+      <div class="no-break" style="margin-bottom:32px;">
+        <div style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:${or};margin-bottom:8px;">Sem contrato fixo</div>
+        <div style="font-size:18px;font-weight:700;color:${wh};margin-bottom:16px;">Serviços Avulsos</div>
+        <div style="display:flex;gap:2px;flex-wrap:wrap;">
+          ${AVULSOS_DATA.map(a => `
+            <div style="background:${card};border:1px solid ${bdr};padding:18px 16px;flex:1;min-width:120px;">
+              <div style="font-size:11px;color:${g4};margin-bottom:10px;">${a.name}</div>
+              <div style="font-size:20px;font-weight:700;color:${or};letter-spacing:-0.03em;">${a.price}</div>
+            </div>`).join('')}
+        </div>
+      </div>`;
+
+    return `<!DOCTYPE html><html lang="pt-BR"><head>${css}</head><body>
+      <div style="background:${bg};color:${wh};font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;line-height:1.6;padding:0;">
+
+        <!-- Capa -->
+        <div style="background:#000;border-bottom:3px solid ${or};padding:36px 32px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;">
+          <div>
+            <div style="font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:${or};margin-bottom:8px;">Proposta Comercial · Flare Productions</div>
+            <div style="font-size:28px;font-weight:700;color:${wh};letter-spacing:-0.02em;margin-bottom:6px;">${data.empresa}</div>
+            ${data.segmento ? `<div style="font-size:12px;color:${g4};margin-bottom:4px;">${data.segmento}</div>` : ''}
+            <div style="font-size:11px;color:${g3};">Emitida em ${data.date} · Validade: ${data.validade}</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:22px;font-weight:700;letter-spacing:0.08em;color:${wh};"><span style="color:${or};">FLARE</span> PRODUCTIONS</div>
+            <div style="font-size:10px;color:${g3};letter-spacing:0.1em;margin-top:4px;">Impacto Criativo · Franca-SP</div>
+          </div>
+        </div>
+
+        <div style="padding:0 12px;">
+
+        <!-- Dados do cliente -->
+        ${(data.responsavel || data.email || data.telefone) ? `
+        <div class="no-break" style="margin-bottom:24px;background:${card};border:1px solid ${bdr};padding:24px 28px;">
+          <div style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:${or};margin-bottom:16px;">Dados do cliente</div>
+          <div style="display:flex;gap:32px;flex-wrap:wrap;">
+            ${data.responsavel ? `<div><span style="font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:${g3};display:block;margin-bottom:4px;">Responsável</span><span style="font-size:13px;color:${wh};">${data.responsavel}</span></div>` : ''}
+            ${data.email ? `<div><span style="font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:${g3};display:block;margin-bottom:4px;">E-mail</span><span style="font-size:13px;color:${wh};">${data.email}</span></div>` : ''}
+            ${data.telefone ? `<div><span style="font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:${g3};display:block;margin-bottom:4px;">WhatsApp</span><span style="font-size:13px;color:${wh};">${data.telefone}</span></div>` : ''}
+          </div>
+        </div>` : ''}
+
+        <!-- Proposta personalizada -->
+        <div class="no-break" style="margin-bottom:24px;background:${card};border:2px solid ${or};padding:28px;">
+          <div style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:${or};margin-bottom:8px;">Proposta Personalizada</div>
+          <div style="font-size:22px;font-weight:700;color:${wh};margin-bottom:24px;">${data.titulo || data.empresa}</div>
+
+          <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:${g3};margin-bottom:14px;">O que será entregue</div>
+          <div style="margin-bottom:24px;">${entregasList}</div>
+
+          <div style="display:flex;gap:2px;margin-bottom:${data.obs ? '20px' : '0'};">
+            <div style="flex:1;background:#0d0d0d;border:1px solid ${bdr};padding:20px 18px;">
+              <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:${g3};margin-bottom:8px;">Investimento</div>
+              <div style="font-size:28px;font-weight:700;color:${or};letter-spacing:-0.03em;">${data.valor || '—'}</div>
+            </div>
+            <div style="flex:1;background:#0d0d0d;border:1px solid ${bdr};padding:20px 18px;">
+              <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:${g3};margin-bottom:8px;">Contrato mínimo</div>
+              <div style="font-size:18px;font-weight:700;color:${wh};">${data.contrato}</div>
+            </div>
+            <div style="flex:2;background:#0d0d0d;border:1px solid ${bdr};padding:20px 18px;">
+              <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:${g3};margin-bottom:8px;">Forma de pagamento</div>
+              <div style="font-size:13px;color:${wh};line-height:1.5;">${data.pagamento || '—'}</div>
+            </div>
+          </div>
+
+          ${data.obs ? `
+          <div style="background:#0d0d0d;border:1px solid ${bdr};padding:16px 18px;">
+            <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:${g3};margin-bottom:6px;">Observações</div>
+            <div style="font-size:12px;color:${g4};line-height:1.65;">${data.obs}</div>
+          </div>` : ''}
+        </div>
+
+        ${packagesHtml}
+        ${avulsosHtml}
+
+        <!-- Próximos passos -->
+        <div class="no-break" style="background:${card};border:1px solid ${bdr};padding:28px;margin-bottom:24px;">
+          <div style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:${or};margin-bottom:12px;">Próximos Passos</div>
+          ${['Aprovação desta proposta', 'Assinatura do contrato', 'Onboarding e briefing estratégico', 'Kickoff e início das captações'].map((s, i) => `
+            <div style="display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+              <div style="width:28px;height:28px;background:${or};color:#000;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">${i+1}</div>
+              <span style="font-size:13px;color:${wh};">${s}</span>
+            </div>`).join('')}
+        </div>
+
+        <!-- Rodapé -->
+        <div style="border-top:1px solid ${bdr};padding-top:16px;display:flex;justify-content:space-between;align-items:center;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;color:${g4};"><span style="color:${or};">FLARE</span> PRODUCTIONS</div>
           <div style="font-size:11px;color:${g3};">flareproductions@outlook.com · +55 16 98809-5920</div>
           <div style="font-size:11px;color:${g3};">Franca — São Paulo — BR</div>
         </div>
