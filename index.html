@@ -2820,37 +2820,25 @@ Seja específico, direto e profissional. Foque em impacto real no negócio. Toda
       date:        new Date().toLocaleDateString('pt-BR', { day:'2-digit', month:'long', year:'numeric' }),
     };
 
-    // Overlay cobre a tela enquanto o pdf é gerado
-    const overlay = document.createElement('div');
-    overlay.style.cssText = 'position:fixed;inset:0;background:#000;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;';
-    overlay.innerHTML = '<div style="font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#f97316;font-family:Helvetica Neue,sans-serif;">Gerando PDF</div><div style="font-size:13px;color:rgba(255,255,255,0.35);font-family:Helvetica Neue,sans-serif;">Aguarde alguns segundos...</div>';
-    document.body.appendChild(overlay);
-
-    // Container DENTRO do viewport (não off-screen) — html2canvas precisa ver o elemento
-    const container = document.createElement('div');
-    container.style.cssText = 'position:fixed;top:0;left:0;width:794px;background:#000000;z-index:99998;overflow:hidden;';
-    container.innerHTML = buildPropostaPDFContent(data);
-    document.body.appendChild(container);
-
-    const filename = 'proposta-' + empresa.toLowerCase()
-      .normalize('NFD').replace(/[̀-ͯ]/g, '')
-      .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') + '.pdf';
-
-    const cleanup = () => {
-      if (document.body.contains(container)) document.body.removeChild(container);
-      if (document.body.contains(overlay)) document.body.removeChild(overlay);
+    const win = window.open('', '_blank');
+    if (!win) {
+      alert('Permita pop-ups para este site e tente novamente.');
       btn.textContent = '↓ Exportar Proposta PDF';
       btn.disabled = false;
-    };
+      return;
+    }
 
-    html2pdf().set({
-      margin: 8,
-      filename,
-      image: { type: 'jpeg', quality: 0.95 },
-      html2canvas: { scale: 2, backgroundColor: '#000000', useCORS: true, logging: false, allowTaint: true },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-      pagebreak: { mode: 'avoid-all' }
-    }).from(container).save().then(cleanup).catch(cleanup);
+    win.document.write(buildPropostaPDFHtml(data));
+    win.document.close();
+
+    win.addEventListener('load', () => {
+      setTimeout(() => { win.focus(); win.print(); }, 600);
+    });
+
+    setTimeout(() => {
+      btn.textContent = '↓ Exportar Proposta PDF';
+      btn.disabled = false;
+    }, 2000);
   }
 
   function buildPropostaPDFContent(data) {
@@ -2981,33 +2969,131 @@ Seja específico, direto e profissional. Foque em impacto real no negócio. Toda
   }
 
   function buildPropostaPDFHtml(data) {
-    const bg = '#000000', wh = '#ffffff';
-    const filename = 'proposta-' + data.empresa.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-') + '.pdf';
-    const head = `
+    const or = '#f97316', bk = '#000000', gr = '#888888', lgt = '#f5f5f5', bdr = '#e0e0e0';
+    const printCss = `
       <meta charset="UTF-8">
       <style>
+        @page { size: A4; margin: 14mm; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background: ${bg}; color: ${wh}; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; padding: 20px; max-width: 860px; margin: 0 auto; }
-      </style>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"><\/script>`;
+        body { background: #fff; color: #111; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; line-height: 1.6; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        @media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .no-break { page-break-inside: avoid; } }
+        @media screen { body { padding: 24px; max-width: 860px; margin: 0 auto; } }
+      </style>`;
 
-    const autoScript = `
-      <script>
-        window.addEventListener('load', function() {
-          setTimeout(function() {
-            html2pdf().set({
-              margin: [10, 10, 10, 10],
-              filename: '${filename}',
-              image: { type: 'jpeg', quality: 0.97 },
-              html2canvas: { scale: 2, backgroundColor: '${bg}', useCORS: true, logging: false },
-              jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-              pagebreak: { mode: 'avoid-all' }
-            }).from(document.getElementById('proposta-content')).save();
-          }, 800);
-        });
-      <\/script>`;
+    const entregasList = data.entregas
+      ? data.entregas.split('\n').filter(l => l.trim()).map(l => `
+          <div style="display:flex;gap:10px;padding:7px 0;border-bottom:1px solid ${bdr};">
+            <span style="color:${or};font-weight:700;flex-shrink:0;">—</span>
+            <span style="font-size:13px;color:#111;">${l.trim()}</span>
+          </div>`).join('')
+      : '<div style="font-size:13px;color:#888;padding:8px 0;">Nenhuma entrega especificada.</div>';
 
-    return '<!DOCTYPE html><html lang="pt-BR"><head>' + head + '</head><body><div id="proposta-content">' + buildPropostaPDFContent(data) + '</div>' + autoScript + '</body></html>';
+    const packagesHtml = `
+      <div class="no-break" style="margin-bottom:16px;">
+        <div style="font-size:8px;letter-spacing:0.25em;text-transform:uppercase;color:${or};margin-bottom:6px;">Conheça Nossos Planos</div>
+        <div style="font-size:15px;font-weight:700;color:#111;margin-bottom:10px;">Pacotes FRAME</div>
+        <div style="display:flex;gap:2px;">
+          ${PACKAGES_DATA.map(pkg => `
+            <div style="flex:1;border:1px solid ${bdr};display:flex;flex-direction:column;">
+              <div style="padding:14px 14px 10px;border-bottom:1px solid ${bdr};background:${lgt};">
+                <div style="font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:${or};margin-bottom:6px;">${pkg.name}</div>
+                <div style="font-size:22px;font-weight:700;color:#111;letter-spacing:-0.03em;line-height:1;">${pkg.price}</div>
+                <div style="font-size:9px;color:${gr};margin-top:3px;">${pkg.periodo}</div>
+              </div>
+              <div style="padding:10px 14px 14px;">
+                ${pkg.items.map(item => `
+                  <div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px solid ${bdr};font-size:11px;color:#444;">
+                    <span style="color:${or};flex-shrink:0;">—</span>${item}
+                  </div>`).join('')}
+              </div>
+            </div>`).join('')}
+        </div>
+        <div style="margin-top:2px;padding:10px 14px;background:${lgt};border:1px solid ${bdr};font-size:11px;color:#666;">
+          <strong style="color:#333;">Verba de mídia não inclusa.</strong> O investimento em anúncios (Meta/Google Ads) é acordado separadamente.
+        </div>
+      </div>`;
+
+    const avulsosHtml = `
+      <div class="no-break" style="margin-bottom:16px;">
+        <div style="font-size:8px;letter-spacing:0.25em;text-transform:uppercase;color:${or};margin-bottom:6px;">Sem contrato fixo</div>
+        <div style="font-size:15px;font-weight:700;color:#111;margin-bottom:10px;">Serviços Avulsos</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
+          ${AVULSOS_DATA.map(a => `
+            <div style="border:1px solid ${bdr};padding:12px 14px;background:${lgt};">
+              <div style="font-size:10px;color:${gr};margin-bottom:4px;">${a.name}</div>
+              <div style="font-size:16px;font-weight:700;color:${or};">${a.price}</div>
+            </div>`).join('')}
+        </div>
+      </div>`;
+
+    return `<!DOCTYPE html><html lang="pt-BR"><head>${printCss}</head><body>
+
+      <!-- Cabeçalho -->
+      <div style="background:${bk};padding:28px 32px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;">
+        <div>
+          <div style="font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:${or};margin-bottom:6px;">Proposta Comercial · Flare Productions</div>
+          <div style="font-size:24px;font-weight:700;color:#fff;letter-spacing:-0.02em;margin-bottom:4px;">${data.empresa}</div>
+          ${data.segmento ? `<div style="font-size:11px;color:#aaa;">${data.segmento}</div>` : ''}
+          <div style="font-size:10px;color:#666;margin-top:4px;">Emitida em ${data.date} · Validade: ${data.validade}</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:18px;font-weight:700;letter-spacing:0.08em;color:#fff;"><span style="color:${or};">FLARE</span> PRODUCTIONS</div>
+          <div style="font-size:9px;color:#666;letter-spacing:0.1em;margin-top:3px;">Impacto Criativo · Franca-SP</div>
+        </div>
+      </div>
+
+      <!-- Dados do cliente -->
+      ${(data.responsavel || data.email || data.telefone) ? `
+      <div class="no-break" style="margin-bottom:16px;border:1px solid ${bdr};padding:16px 20px;background:${lgt};">
+        <div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:${or};margin-bottom:10px;">Dados do cliente</div>
+        <div style="display:flex;gap:32px;flex-wrap:wrap;">
+          ${data.responsavel ? `<div><span style="font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:${gr};display:block;margin-bottom:3px;">Responsável</span><span style="font-size:13px;color:#111;">${data.responsavel}</span></div>` : ''}
+          ${data.email ? `<div><span style="font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:${gr};display:block;margin-bottom:3px;">E-mail</span><span style="font-size:13px;color:#111;">${data.email}</span></div>` : ''}
+          ${data.telefone ? `<div><span style="font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:${gr};display:block;margin-bottom:3px;">WhatsApp</span><span style="font-size:13px;color:#111;">${data.telefone}</span></div>` : ''}
+        </div>
+      </div>` : ''}
+
+      <!-- Proposta personalizada -->
+      <div class="no-break" style="margin-bottom:16px;border:2px solid ${or};padding:20px;">
+        <div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:${or};margin-bottom:6px;">Proposta Personalizada</div>
+        <div style="font-size:18px;font-weight:700;color:#111;margin-bottom:16px;">${data.titulo || data.empresa}</div>
+        <div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:${gr};margin-bottom:10px;">O que será entregue</div>
+        <div style="margin-bottom:16px;">${entregasList}</div>
+        <div style="display:flex;gap:2px;margin-bottom:${data.obs ? '12px' : '0'};">
+          <div style="flex:1;border:1px solid ${bdr};padding:14px;">
+            <div style="font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:${gr};margin-bottom:6px;">Investimento</div>
+            <div style="font-size:22px;font-weight:700;color:${or};">${data.valor || '—'}</div>
+          </div>
+          <div style="flex:1;border:1px solid ${bdr};padding:14px;background:${lgt};">
+            <div style="font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:${gr};margin-bottom:6px;">Tipo de contrato</div>
+            <div style="font-size:15px;font-weight:700;color:#111;">${data.contrato}</div>
+          </div>
+          <div style="flex:2;border:1px solid ${bdr};padding:14px;background:${lgt};">
+            <div style="font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:${gr};margin-bottom:6px;">Forma de pagamento</div>
+            <div style="font-size:13px;color:#111;line-height:1.5;">${data.pagamento || '—'}</div>
+          </div>
+        </div>
+        ${data.obs ? `
+        <div style="border:1px solid ${bdr};padding:12px 14px;background:${lgt};">
+          <div style="font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:${gr};margin-bottom:4px;">Observações</div>
+          <div style="font-size:11px;color:#555;line-height:1.6;">${data.obs}</div>
+        </div>` : ''}
+      </div>
+
+      ${packagesHtml}
+      ${avulsosHtml}
+
+      <!-- Próximos passos -->
+      <div class="no-break" style="border:1px solid ${bdr};padding:20px;background:${lgt};">
+        <div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:${or};margin-bottom:10px;">Próximos Passos</div>
+        ${['Aprovação desta proposta', 'Assinatura do contrato', 'Onboarding e briefing estratégico', 'Kickoff e início das captações'].map((s, i) => `
+          <div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid ${bdr};">
+            <div style="width:24px;height:24px;background:${or};color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">${i+1}</div>
+            <span style="font-size:13px;color:#111;">${s}</span>
+          </div>`).join('')}
+      </div>
+
+    </body></html>`;
   }
   </script>
 
