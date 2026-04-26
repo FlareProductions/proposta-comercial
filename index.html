@@ -2866,9 +2866,9 @@ Seja específico, direto e profissional. Foque em impacto real no negócio. Toda
       : `<div style="font-size:13px;color:${g4};padding:12px 0;">Nenhuma entrega especificada.</div>`;
 
     const packagesHtml = `
-      <div class="no-break" style="margin-bottom:24px;">
-        <div style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:${or};margin-bottom:8px;">Conheça Nossos Planos</div>
-        <div style="font-size:18px;font-weight:700;color:${wh};margin-bottom:16px;">Pacotes FRAME</div>
+      <div class="no-break" style="margin-bottom:16px;">
+        <div style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:${or};margin-bottom:6px;">Conheça Nossos Planos</div>
+        <div style="font-size:16px;font-weight:700;color:${wh};margin-bottom:10px;">Pacotes FRAME</div>
         <div style="display:flex;gap:2px;">
           ${PACKAGES_DATA.map(pkg => `
             <div style="flex:1;background:${card};border:1px solid ${bdr};display:flex;flex-direction:column;">
@@ -2891,14 +2891,14 @@ Seja específico, direto e profissional. Foque em impacto real no negócio. Toda
       </div>`;
 
     const avulsosHtml = `
-      <div class="no-break" style="margin-bottom:32px;">
-        <div style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:${or};margin-bottom:8px;">Sem contrato fixo</div>
-        <div style="font-size:18px;font-weight:700;color:${wh};margin-bottom:16px;">Serviços Avulsos</div>
-        <div style="display:flex;gap:2px;flex-wrap:wrap;">
+      <div class="no-break" style="margin-bottom:16px;">
+        <div style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:${or};margin-bottom:6px;">Sem contrato fixo</div>
+        <div style="font-size:16px;font-weight:700;color:${wh};margin-bottom:10px;">Serviços Avulsos</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
           ${AVULSOS_DATA.map(a => `
-            <div style="background:${card};border:1px solid ${bdr};padding:18px 16px;flex:1;min-width:120px;">
-              <div style="font-size:11px;color:${g4};margin-bottom:10px;">${a.name}</div>
-              <div style="font-size:20px;font-weight:700;color:${or};letter-spacing:-0.03em;">${a.price}</div>
+            <div style="background:${card};border:1px solid ${bdr};padding:14px 14px;">
+              <div style="font-size:10px;color:${g4};margin-bottom:6px;">${a.name}</div>
+              <div style="font-size:17px;font-weight:700;color:${or};letter-spacing:-0.02em;">${a.price}</div>
             </div>`).join('')}
         </div>
       </div>`;
@@ -2947,7 +2947,7 @@ Seja específico, direto e profissional. Foque em impacto real no negócio. Toda
               <div style="font-size:28px;font-weight:700;color:${or};letter-spacing:-0.03em;">${data.valor || '—'}</div>
             </div>
             <div style="flex:1;background:#000000;border:1px solid ${bdr};padding:20px 18px;">
-              <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:${g3};margin-bottom:8px;">Contrato mínimo</div>
+              <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:${g3};margin-bottom:8px;">Tipo de contrato</div>
               <div style="font-size:18px;font-weight:700;color:${wh};">${data.contrato}</div>
             </div>
             <div style="flex:2;background:#000000;border:1px solid ${bdr};padding:20px 18px;">
@@ -2967,20 +2967,13 @@ Seja específico, direto e profissional. Foque em impacto real no negócio. Toda
         ${avulsosHtml}
 
         <!-- Próximos passos -->
-        <div class="no-break" style="background:${card};border:1px solid ${bdr};padding:28px;margin-bottom:24px;">
+        <div class="no-break" style="background:${card};border:1px solid ${bdr};padding:28px;">
           <div style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:${or};margin-bottom:12px;">Próximos Passos</div>
           ${['Aprovação desta proposta', 'Assinatura do contrato', 'Onboarding e briefing estratégico', 'Kickoff e início das captações'].map((s, i) => `
             <div style="display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
               <div style="width:28px;height:28px;background:${or};color:#000;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">${i+1}</div>
               <span style="font-size:13px;color:${wh};">${s}</span>
             </div>`).join('')}
-        </div>
-
-        <!-- Rodapé -->
-        <div style="border-top:1px solid ${bdr};padding-top:16px;display:flex;justify-content:space-between;align-items:center;">
-          <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;color:${g4};"><span style="color:${or};">FLARE</span> PRODUCTIONS</div>
-          <div style="font-size:11px;color:${g3};">flareproductions@outlook.com · +55 16 98809-5920</div>
-          <div style="font-size:11px;color:${g3};">Franca — São Paulo — BR</div>
         </div>
 
         </div>
