@@ -2530,9 +2530,7 @@ Seja específico, direto e profissional. Foque em impacto real no negócio. Toda
     win.document.write(buildPDFHtml(activeDiag));
     win.document.close();
 
-    win.addEventListener('load', () => {
-      setTimeout(() => { win.focus(); win.print(); }, 600);
-    });
+    setTimeout(() => { win.focus(); win.print(); }, 800);
 
     setTimeout(() => {
       btn.textContent = '↓ Exportar PDF';
@@ -2831,9 +2829,7 @@ Seja específico, direto e profissional. Foque em impacto real no negócio. Toda
     win.document.write(buildPropostaPDFHtml(data));
     win.document.close();
 
-    win.addEventListener('load', () => {
-      setTimeout(() => { win.focus(); win.print(); }, 600);
-    });
+    setTimeout(() => { win.focus(); win.print(); }, 800);
 
     setTimeout(() => {
       btn.textContent = '↓ Exportar Proposta PDF';
