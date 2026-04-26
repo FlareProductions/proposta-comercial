@@ -2793,10 +2793,8 @@ Seja específico, direto e profissional. Foque em impacto real no negócio. Toda
   // ══════════════════════════════════════════════════════
   function exportPropostaPDF() {
     const empresa = document.getElementById('p-empresa').value.trim();
-    if (!empresa) {
-      alert('Preencha ao menos o nome da empresa.');
-      return;
-    }
+    if (!empresa) { alert('Preencha ao menos o nome da empresa.'); return; }
+
     const btn = document.getElementById('btnExportProposta');
     btn.textContent = '⏳ Gerando PDF...';
     btn.disabled = true;
@@ -2817,29 +2815,13 @@ Seja específico, direto e profissional. Foque em impacto real no negócio. Toda
       date:        new Date().toLocaleDateString('pt-BR', { day:'2-digit', month:'long', year:'numeric' }),
     };
 
-    const container = document.createElement('div');
-    container.style.cssText = 'position:absolute;left:-9999px;top:0;width:794px;background:#0d0d0d;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;';
-    container.innerHTML = buildPropostaPDFContent(data);
-    document.body.appendChild(container);
+    const win = window.open('', '_blank');
+    if (!win) { alert('Permita pop-ups para este site e tente novamente.'); btn.textContent = '↓ Exportar Proposta PDF'; btn.disabled = false; return; }
 
-    const filename = 'proposta-' + empresa.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-') + '.pdf';
+    win.document.write(buildPropostaPDFHtml(data));
+    win.document.close();
 
-    html2pdf().set({
-      margin: 10,
-      filename,
-      image: { type: 'jpeg', quality: 0.97 },
-      html2canvas: { scale: 2, backgroundColor: '#0d0d0d', useCORS: true, logging: false },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
-    }).from(container).save().then(() => {
-      document.body.removeChild(container);
-      btn.textContent = '↓ Exportar Proposta PDF';
-      btn.disabled = false;
-    }).catch(() => {
-      document.body.removeChild(container);
-      btn.textContent = '↓ Exportar Proposta PDF';
-      btn.disabled = false;
-    });
+    setTimeout(() => { btn.textContent = '↓ Exportar Proposta PDF'; btn.disabled = false; }, 3000);
   }
 
   function buildPropostaPDFContent(data) {
@@ -2977,17 +2959,33 @@ Seja específico, direto e profissional. Foque em impacto real no negócio. Toda
   }
 
   function buildPropostaPDFHtml(data) {
-    const bg = '#0d0d0d', wh = '#ffffff';
-    const css = `
+    const bg = '#000000', wh = '#ffffff';
+    const filename = 'proposta-' + data.empresa.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-') + '.pdf';
+    const head = `
       <meta charset="UTF-8">
       <style>
-        @page { size: A4; margin: 12mm; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background: ${bg}; color: ${wh}; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-        @media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .no-break { page-break-inside: avoid; } }
-        @media screen { body { padding: 20px; max-width: 860px; margin: 0 auto; } }
-      </style>`;
-    return `<!DOCTYPE html><html lang="pt-BR"><head>${css}</head><body>${buildPropostaPDFContent(data)}</body></html>`;
+        body { background: ${bg}; color: ${wh}; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; padding: 20px; max-width: 860px; margin: 0 auto; }
+      </style>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"><\/script>`;
+
+    const autoScript = `
+      <script>
+        window.addEventListener('load', function() {
+          setTimeout(function() {
+            html2pdf().set({
+              margin: [10, 10, 10, 10],
+              filename: '${filename}',
+              image: { type: 'jpeg', quality: 0.97 },
+              html2canvas: { scale: 2, backgroundColor: '${bg}', useCORS: true, logging: false },
+              jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+              pagebreak: { mode: 'avoid-all' }
+            }).from(document.getElementById('proposta-content')).save();
+          }, 800);
+        });
+      <\/script>`;
+
+    return '<!DOCTYPE html><html lang="pt-BR"><head>' + head + '</head><body><div id="proposta-content">' + buildPropostaPDFContent(data) + '</div>' + autoScript + '</body></html>';
   }
   </script>
 
